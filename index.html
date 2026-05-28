@@ -503,16 +503,16 @@ const BOOKINGS = [
   {
     id: 'flights-dkr',
     priority: '04', label: 'High',
-    name: 'Flights — Dakar to Buenos Aires',
-    desc: 'Return flights, Dakar DSS → Buenos Aires EZE. Best options via São Paulo GRU (TAP/LATAM) or Paris CDG (Air France). Aim to land Buenos Aires the morning of Sep 20. Book once estancia dates are confirmed — they anchor everything.',
+    name: 'Lamine — Dakar to Buenos Aires',
+    desc: 'Lamine\'s return flights, Dakar DSS → Buenos Aires EZE. Best options via São Paulo GRU (TAP/LATAM) or Paris CDG (Air France). Aim to land Buenos Aires the morning of Sep 20. Book once estancia dates are confirmed — they anchor everything.',
     link: 'https://www.google.com/flights',
     linkLabel: 'Search Google Flights',
   },
   {
     id: 'flights-ham',
     priority: '05', label: 'High',
-    name: 'Partner Flights — Hamburg to Buenos Aires',
-    desc: 'The logistical lynchpin. Lufthansa via Frankfurt (~14 hrs) or Iberia via Madrid (~15 hrs). Both travelers must arrive EZE on the same date to travel onward together. Book simultaneously with Dakar flights and align arrival windows carefully.',
+    name: 'Lars — Hamburg to Buenos Aires',
+    desc: 'The logistical lynchpin. Lufthansa via Frankfurt (~14 hrs) or Iberia via Madrid (~15 hrs). Lamine and Lars must arrive EZE on the same date to travel onward together. Book simultaneously with Lamine\'s Dakar flights and align arrival windows carefully.',
     link: 'https://www.google.com/flights',
     linkLabel: 'Search Google Flights',
   },
@@ -555,7 +555,7 @@ const TRANSPORT = [
   {
     id: 'dkr-eze',
     priority: 'Urgent',
-    from: 'Dakar (DSS)', to: 'Buenos Aires (EZE)',
+    from: 'Lamine — Dakar (DSS)', to: 'Buenos Aires (EZE)',
     date: 'Sep 19–20, 2026', duration: '~16–18 hrs total', type: 'International',
     desc: 'No direct routing Dakar–Buenos Aires. Best options: via São Paulo GRU (TAP or LATAM connecting) or via Paris CDG (Air France). Aim to land EZE the morning of Sep 20 for a full recovery day before the trip begins.',
     link: 'https://www.google.com/flights', linkLabel: 'Search Google Flights',
@@ -563,9 +563,9 @@ const TRANSPORT = [
   {
     id: 'ham-eze',
     priority: 'Highest',
-    from: 'Hamburg (HAM)', to: 'Buenos Aires (EZE)',
+    from: 'Lars — Hamburg (HAM)', to: 'Buenos Aires (EZE)',
     date: 'Sep 19–20, 2026', duration: '~14–16 hrs total', type: 'International',
-    desc: 'Partner flight — the logistical lynchpin of the entire journey. Lufthansa via Frankfurt FRA or Iberia via Madrid MAD. Both travelers must coordinate arrivals at EZE to travel onward together. Book simultaneously with the Dakar flight and align arrival windows exactly.',
+    desc: 'Lars\'s flight — the logistical lynchpin of the entire journey. Lufthansa via Frankfurt FRA or Iberia via Madrid MAD. Lamine and Lars must coordinate arrivals at EZE to travel onward together. Book simultaneously with Lamine\'s Dakar flight and align arrival windows exactly.',
     link: 'https://www.google.com/flights', linkLabel: 'Search Google Flights',
   },
   {
@@ -595,7 +595,7 @@ const TRANSPORT = [
   {
     id: 'eze-dkr',
     priority: 'Medium',
-    from: 'Buenos Aires (EZE)', to: 'Dakar (DSS)',
+    from: 'Buenos Aires (EZE)', to: 'Lamine — Dakar (DSS)',
     date: 'Oct 3, 2026', duration: '~16–18 hrs total', type: 'International',
     desc: 'Return routing mirrors the outbound — via São Paulo GRU or Paris CDG. Book the return simultaneously with the outbound to lock in routing and pricing. Departs EZE Oct 3; allow generous time to reach the international terminal.',
     link: 'https://www.google.com/flights', linkLabel: 'Search Google Flights',
@@ -843,7 +843,7 @@ function renderCountdown() {
     {
       by: new Date('2026-06-15'),
       task: 'Book International Flights — Dakar and Hamburg',
-      sub: 'Both travelers must lock flights simultaneously and coordinate arrivals at EZE. Hamburg flight is the logistical lynchpin.',
+      sub: 'Lamine (Dakar) and Lars (Hamburg) must lock flights simultaneously and coordinate arrivals at EZE. Lars\'s Hamburg flight is the logistical lynchpin.',
       threshold: 21,
     },
     {
