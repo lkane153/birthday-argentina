@@ -1,909 +1,718 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>50th Birthday — Argentina</title>
-<style>
-  :root {
-    --bg: #0f0e0c;
-    --bg2: #181510;
-    --bg3: #1f1b14;
-    --gold: #c9a84c;
-    --gold-light: #e4c97e;
-    --gold-dim: #7a6330;
-    --cream: #f0e6cc;
-    --cream-dim: #a09070;
-    --text: #e8dcc8;
-    --muted: #7a6e5a;
-    --border: #2a2418;
-    --border2: #3a3020;
-    --red: #c0392b;
-    --green: #27ae60;
-    --orange: #d35400;
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Georgia', 'Times New Roman', serif;
-    min-height: 100vh;
-  }
-
-  /* ── HEADER ── */
-  header {
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border2);
-    padding: 28px 40px 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-
-  .header-top {
-    display: flex;
-    align-items: baseline;
-    gap: 24px;
-    margin-bottom: 20px;
-  }
-
-  h1 {
-    font-size: 1.35rem;
-    font-weight: normal;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold-light);
-  }
-
-  .header-sub {
-    font-size: 0.78rem;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  nav {
-    display: flex;
-    gap: 0;
-  }
-
-  nav button {
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    color: var(--cream-dim);
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    padding: 10px 24px;
-    text-transform: uppercase;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  nav button:hover { color: var(--cream); }
-
-  nav button.active {
-    border-bottom-color: var(--gold);
-    color: var(--gold-light);
-  }
-
-  /* ── MAIN ── */
-  main {
-    max-width: 920px;
-    margin: 0 auto;
-    padding: 48px 40px;
-  }
-
-  section { display: none; }
-  section.active { display: block; }
-
-  /* ── SECTION TITLES ── */
-  .section-title {
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 36px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border2);
-  }
-
-  /* ── CARDS ── */
-  .card {
-    background: var(--bg2);
-    border: 1px solid var(--border2);
-    border-radius: 2px;
-    margin-bottom: 24px;
-    overflow: hidden;
-  }
-
-  .card-header {
-    padding: 20px 24px 16px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-  }
-
-  .card-label {
-    font-size: 0.62rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-  }
-
-  .card-title {
-    font-size: 1.05rem;
-    color: var(--cream);
-    font-weight: normal;
-  }
-
-  .card-dates {
-    font-size: 0.72rem;
-    color: var(--muted);
-    margin-left: auto;
-    letter-spacing: 0.08em;
-  }
-
-  .card-body {
-    padding: 20px 24px;
-  }
-
-  .card-desc {
-    font-size: 0.85rem;
-    color: var(--cream-dim);
-    line-height: 1.8;
-    margin-bottom: 16px;
-  }
-
-  .tag-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .tag {
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold-dim);
-    border: 1px solid var(--border2);
-    padding: 4px 10px;
-    border-radius: 1px;
-  }
-
-  /* ── TRANSPORT ── */
-  .transport-section {
-    margin-top: 48px;
-  }
-
-  .transport-title {
-    font-size: 0.62rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-  }
-
-  .transport-item {
-    background: var(--bg2);
-    border: 1px solid var(--border2);
-    border-left: 3px solid var(--border2);
-    margin-bottom: 12px;
-    padding: 16px 20px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 12px;
-    align-items: start;
-  }
-
-  .transport-item.priority-high { border-left-color: var(--gold); }
-  .transport-item.priority-urgent { border-left-color: var(--red); }
-
-  .transport-route {
-    font-size: 0.9rem;
-    color: var(--cream);
-    margin-bottom: 4px;
-  }
-
-  .transport-detail {
-    font-size: 0.75rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  .transport-badge {
-    font-size: 0.58rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 1px;
-    white-space: nowrap;
-    margin-top: 2px;
-  }
-
-  .badge-urgent { background: rgba(192,57,43,0.15); color: #e07060; border: 1px solid rgba(192,57,43,0.3); }
-  .badge-high { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
-  .badge-medium { background: rgba(120,100,60,0.15); color: var(--gold-dim); border: 1px solid var(--border2); }
-
-  .transport-status {
-    margin-top: 10px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .transport-status label {
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  /* ── BOOKINGS ── */
-  .booking-item {
-    background: var(--bg2);
-    border: 1px solid var(--border2);
-    border-left: 3px solid var(--border2);
-    margin-bottom: 14px;
-    padding: 20px 24px;
-  }
-
-  .booking-item.priority-first { border-left-color: var(--gold-light); }
-  .booking-item.priority-urgent { border-left-color: var(--red); }
-  .booking-item.priority-high { border-left-color: var(--gold); }
-  .booking-item.priority-medium { border-left-color: var(--gold-dim); }
-
-  .booking-header {
-    display: flex;
-    align-items: baseline;
-    gap: 12px;
-    margin-bottom: 14px;
-  }
-
-  .booking-num {
-    font-size: 0.62rem;
-    color: var(--muted);
-    letter-spacing: 0.1em;
-    min-width: 20px;
-  }
-
-  .booking-name {
-    font-size: 0.95rem;
-    color: var(--cream);
-    flex: 1;
-  }
-
-  .booking-controls {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-
-  .booking-controls label {
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .booking-notes {
-    margin-top: 10px;
-  }
-
-  /* ── FORM ELEMENTS ── */
-  select, input[type="text"] {
-    background: var(--bg3);
-    border: 1px solid var(--border2);
-    color: var(--text);
-    font-family: inherit;
-    font-size: 0.8rem;
-    padding: 7px 10px;
-    width: 100%;
-    outline: none;
-    transition: border-color 0.2s;
-    border-radius: 1px;
-  }
-
-  select:focus, input[type="text"]:focus {
-    border-color: var(--gold-dim);
-  }
-
-  select option { background: var(--bg3); }
-
-  textarea {
-    background: var(--bg3);
-    border: 1px solid var(--border2);
-    color: var(--cream-dim);
-    font-family: inherit;
-    font-size: 0.78rem;
-    padding: 8px 10px;
-    width: 100%;
-    outline: none;
-    resize: vertical;
-    min-height: 52px;
-    line-height: 1.5;
-    border-radius: 1px;
-  }
-
-  textarea:focus { border-color: var(--gold-dim); }
-  textarea::placeholder { color: var(--muted); opacity: 0.7; }
-  input::placeholder { color: var(--muted); opacity: 0.7; }
-
-  .btn-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: none;
-    border: 1px solid var(--border2);
-    color: var(--gold-dim);
-    cursor: pointer;
-    font-family: inherit;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    padding: 6px 14px;
-    text-transform: uppercase;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
-    border-radius: 1px;
-  }
-
-  .btn-link:hover {
-    border-color: var(--gold);
-    color: var(--gold-light);
-  }
-
-  /* status dot */
-  .status-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    margin-right: 4px;
-    vertical-align: middle;
-  }
-
-  .status-dot.not-started { background: var(--muted); }
-  .status-dot.in-progress { background: var(--orange); }
-  .status-dot.confirmed { background: var(--green); }
-
-  /* ── COUNTDOWN ── */
-  .countdown-hero {
-    text-align: center;
-    padding: 60px 0 48px;
-    border-bottom: 1px solid var(--border2);
-    margin-bottom: 48px;
-  }
-
-  .countdown-number {
-    font-size: 7rem;
-    line-height: 1;
-    color: var(--gold-light);
-    letter-spacing: -0.02em;
-    margin-bottom: 12px;
-  }
-
-  .countdown-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  .countdown-date {
-    font-size: 0.85rem;
-    color: var(--cream-dim);
-    margin-top: 20px;
-    letter-spacing: 0.1em;
-  }
-
-  .urgency-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-
-  .urgency-card {
-    background: var(--bg2);
-    border: 1px solid var(--border2);
-    padding: 20px;
-  }
-
-  .urgency-title {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 8px;
-  }
-
-  .urgency-desc {
-    font-size: 0.8rem;
-    color: var(--cream-dim);
-    line-height: 1.7;
-  }
-
-  .urgency-window {
-    font-size: 0.72rem;
-    color: var(--muted);
-    margin-top: 8px;
-    font-style: italic;
-  }
-
-  .urgency-critical .urgency-title { color: #e07060; }
-  .urgency-high .urgency-title { color: var(--gold-light); }
-
-  /* ── THE DAY ── */
-  .day-hero {
-    text-align: center;
-    padding: 48px 0 40px;
-    border-bottom: 1px solid var(--border2);
-    margin-bottom: 48px;
-  }
-
-  .day-date {
-    font-size: 0.7rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 16px;
-  }
-
-  .day-title {
-    font-size: 2.2rem;
-    color: var(--cream);
-    font-weight: normal;
-    letter-spacing: 0.08em;
-    margin-bottom: 8px;
-  }
-
-  .day-subtitle {
-    font-size: 0.82rem;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-  }
-
-  .timeline {
-    position: relative;
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 80px;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: var(--border2);
-  }
-
-  .tl-item {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 0 28px;
-    margin-bottom: 0;
-    position: relative;
-  }
-
-  .tl-time {
-    text-align: right;
-    padding: 28px 0;
-    font-size: 0.68rem;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-    padding-top: 32px;
-  }
-
-  .tl-content {
-    padding: 28px 0 28px 28px;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-  }
-
-  .tl-item:last-child .tl-content { border-bottom: none; }
-
-  .tl-content::before {
-    content: '';
-    position: absolute;
-    left: -5px;
-    top: 36px;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: var(--bg);
-    border: 1px solid var(--gold-dim);
-  }
-
-  .tl-title {
-    font-size: 0.92rem;
-    color: var(--cream);
-    margin-bottom: 6px;
-  }
-
-  .tl-desc {
-    font-size: 0.8rem;
-    color: var(--cream-dim);
-    line-height: 1.75;
-  }
-
-  .tl-highlight .tl-content::before {
-    background: var(--gold);
-    border-color: var(--gold-light);
-    width: 11px;
-    height: 11px;
-    left: -6px;
-    top: 35px;
-  }
-
-  .tl-highlight .tl-title { color: var(--gold-light); }
-
-  /* ── DIVIDER ── */
-  .divider {
-    height: 1px;
-    background: var(--border2);
-    margin: 36px 0;
-  }
-
-  /* birthday badge */
-  .birthday-badge {
-    display: inline-block;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    background: rgba(201,168,76,0.1);
-    border: 1px solid rgba(201,168,76,0.3);
-    color: var(--gold);
-    padding: 3px 10px;
-    border-radius: 1px;
-    margin-left: 10px;
-    vertical-align: middle;
-  }
-
-  /* status select coloring */
-  select.status-not-started { color: var(--muted); }
-  select.status-in-progress { color: #d4804a; }
-  select.status-confirmed { color: #5aaa78; }
-
-  /* responsive */
-  @media (max-width: 640px) {
-    header { padding: 20px 20px 0; }
-    main { padding: 32px 20px; }
-    .urgency-grid { grid-template-columns: 1fr; }
-    .booking-controls { grid-template-columns: 1fr; }
-    nav button { padding: 10px 14px; font-size: 0.65rem; }
-    .countdown-number { font-size: 5rem; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Argentina 50th — September 2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #080705;
+      --bg2:         #0f0d09;
+      --bg3:         #181510;
+      --bg4:         #201d15;
+      --gold:        #c9a84c;
+      --gold-light:  #e8c97a;
+      --gold-dim:    #7d6530;
+      --gold-faint:  rgba(201,168,76,0.12);
+      --cream:       #f0e8d8;
+      --cream-dim:   #a09080;
+      --green:       #6a9e72;
+      --amber:       #c49a3a;
+      --red:         #c2624a;
+      --border:      #221f16;
+      --border-gold: rgba(201,168,76,0.22);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      text-align: center;
+      padding: 3.5rem 2rem 2.25rem;
+      position: relative;
+      background: linear-gradient(180deg, #0c0a05 0%, var(--bg) 100%);
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+    }
+    .eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-dim);
+      margin-bottom: 0.9rem;
+    }
+    .header-title {
+      font-size: clamp(1.9rem, 5vw, 3.2rem);
+      font-weight: normal;
+      color: var(--cream);
+      letter-spacing: 0.06em;
+      line-height: 1.15;
+    }
+    .header-title em { color: var(--gold); font-style: normal; }
+    .divider {
+      width: 52px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+      margin: 1rem auto;
+    }
+    .header-sub {
+      font-size: 0.82rem;
+      color: var(--cream-dim);
+      letter-spacing: 0.12em;
+      font-style: italic;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid var(--border-gold);
+      background: var(--bg2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      overflow-x: auto;
+    }
+    nav button {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--cream-dim);
+      font-family: inherit;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 1.1rem 1.6rem;
+      cursor: pointer;
+      transition: color 0.18s, border-color 0.18s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    nav button:hover { color: var(--cream); }
+    nav button.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+    /* ─── MAIN ─── */
+    main {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 5rem;
+    }
+    .section { display: none; }
+    .section.active { display: block; animation: fadeIn 0.25s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.75rem;
+    }
+    .section-header h2 {
+      font-size: 1.35rem;
+      font-weight: normal;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .section-header p {
+      margin-top: 0.45rem;
+      font-size: 0.82rem;
+      color: var(--cream-dim);
+      font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════
+       ITINERARY TIMELINE
+    ═══════════════════════════════════════ */
+    .timeline {
+      position: relative;
+      padding-left: 130px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 129px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, var(--border-gold) 5%, var(--border-gold) 95%, transparent);
+    }
+    .leg {
+      position: relative;
+      padding: 0 0 2.5rem 2rem;
+    }
+    .leg:last-child { padding-bottom: 0; }
+    .leg-dot {
+      position: absolute;
+      left: -7px; top: 0.35rem;
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--gold-dim);
+      z-index: 2;
+    }
+    .leg-dot.star {
+      border-color: var(--gold);
+      background: var(--gold);
+      box-shadow: 0 0 16px rgba(201,168,76,0.55);
+    }
+    .leg-label {
+      position: absolute;
+      right: 100%;
+      top: 0;
+      width: 112px;
+      padding-right: 1.75rem;
+      text-align: right;
+    }
+    .leg-dates { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.07em; line-height: 1.4; }
+    .leg-nights { font-size: 0.62rem; color: var(--cream-dim); margin-top: 0.2rem; }
+
+    .leg-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 1.4rem 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .leg-card:hover { border-color: var(--border-gold); }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-faint);
+      border: 1px solid var(--border-gold);
+      padding: 0.18rem 0.55rem;
+      border-radius: 2px;
+      margin-bottom: 0.6rem;
+    }
+    .leg-hotel { font-size: 1rem; color: var(--cream); letter-spacing: 0.03em; margin-bottom: 0.2rem; }
+    .leg-location {
+      font-size: 0.65rem;
+      color: var(--gold-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+    .leg-acts { list-style: none; margin-bottom: 0.9rem; }
+    .leg-acts li {
+      font-size: 0.79rem;
+      color: var(--cream-dim);
+      padding: 0.22rem 0 0.22rem 1.1rem;
+      position: relative;
+      line-height: 1.4;
+    }
+    .leg-acts li::before { content: '—'; position: absolute; left: 0; color: var(--gold-dim); }
+    .leg-note {
+      font-size: 0.73rem;
+      color: var(--gold-dim);
+      font-style: italic;
+      border-left: 2px solid var(--gold-dim);
+      padding-left: 0.8rem;
+      line-height: 1.55;
+    }
+
+    /* ═══════════════════════════════════════
+       BOOKING TRACKER
+    ═══════════════════════════════════════ */
+    .progress-wrap {
+      background: var(--bg2);
+      border: 1px solid var(--border-gold);
+      border-radius: 5px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .progress-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.6rem;
+    }
+    .progress-row span { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-dim); }
+    .progress-row strong { font-size: 0.78rem; color: var(--gold); }
+    .progress-track { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+      border-radius: 2px;
+      transition: width 0.4s ease;
+    }
+
+    .booking-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      margin-bottom: 6px;
+      overflow: hidden;
+      transition: border-color 0.18s;
+    }
+    .booking-item:hover { border-color: var(--border-gold); }
+    .booking-item.confirmed { border-color: rgba(106,158,114,0.25); }
+
+    .b-header {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1rem 1.25rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .b-priority { font-size: 0.58rem; color: var(--gold-dim); letter-spacing: 0.12em; text-transform: uppercase; min-width: 60px; flex-shrink: 0; }
+    .b-name { flex: 1; font-size: 0.88rem; color: var(--cream); }
+    .b-status {
+      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.22rem 0.55rem; border-radius: 2px; border: 1px solid;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .st-ns  { color: var(--cream-dim); border-color: #333; background: rgba(255,255,255,0.02); }
+    .st-ip  { color: var(--amber); border-color: rgba(196,154,58,0.3); background: rgba(196,154,58,0.08); }
+    .st-ok  { color: var(--green); border-color: rgba(106,158,114,0.3); background: rgba(106,158,114,0.08); }
+    .b-chevron { color: var(--cream-dim); font-size: 0.65rem; transition: transform 0.18s; flex-shrink: 0; }
+    .booking-item.open .b-chevron { transform: rotate(180deg); }
+
+    .b-body { display: none; padding: 0 1.25rem 1.25rem; border-top: 1px solid var(--border); }
+    .booking-item.open .b-body { display: block; }
+
+    .b-desc {
+      font-size: 0.76rem; color: var(--cream-dim); font-style: italic;
+      line-height: 1.6; padding-top: 0.85rem; margin-bottom: 1.1rem;
+    }
+    .b-link-row { margin-bottom: 1rem; }
+    .b-link-row label {
+      display: block; font-size: 0.58rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.28rem;
+    }
+    .b-link-anchor {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.78rem; color: var(--gold); text-decoration: none;
+      border-bottom: 1px solid rgba(201,168,76,0.3); padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s; word-break: break-all;
+    }
+    .b-link-anchor:hover { color: var(--gold-light); border-bottom-color: var(--gold-light); }
+    .b-link-anchor svg { flex-shrink: 0; }
+
+    .status-btns { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.1rem; }
+    .status-btns > span { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-right: 0.2rem; }
+    .sbtn {
+      background: none; border: 1px solid var(--border); color: var(--cream-dim);
+      font-family: inherit; font-size: 0.62rem; letter-spacing: 0.12em;
+      text-transform: uppercase; padding: 0.3rem 0.7rem; cursor: pointer;
+      border-radius: 2px; transition: all 0.15s;
+    }
+    .sbtn:hover { border-color: var(--gold-dim); color: var(--gold); }
+    .sbtn.on-ns { border-color: #555; color: var(--cream-dim); background: rgba(255,255,255,0.04); }
+    .sbtn.on-ip { border-color: rgba(196,154,58,0.5); color: var(--amber); background: rgba(196,154,58,0.1); }
+    .sbtn.on-ok { border-color: rgba(106,158,114,0.5); color: var(--green); background: rgba(106,158,114,0.1); }
+
+    .b-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    @media (max-width: 580px) { .b-fields { grid-template-columns: 1fr; } }
+
+    .fgroup { display: flex; flex-direction: column; gap: 0.28rem; }
+    .fgroup label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); }
+    .fgroup input, .fgroup textarea {
+      background: var(--bg3); border: 1px solid var(--border); color: var(--cream);
+      font-family: inherit; font-size: 0.8rem; padding: 0.5rem 0.7rem;
+      border-radius: 3px; outline: none; transition: border-color 0.18s;
+    }
+    .fgroup input:focus, .fgroup textarea:focus { border-color: var(--gold-dim); }
+    .fgroup textarea { resize: vertical; min-height: 62px; }
+
+    /* ═══════════════════════════════════════
+       TRANSPORT
+    ═══════════════════════════════════════ */
+    .transport-leg {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: 5px; margin-bottom: 6px; overflow: hidden; transition: border-color 0.18s;
+    }
+    .transport-leg:hover { border-color: var(--border-gold); }
+    .transport-leg.tconfirmed { border-color: rgba(106,158,114,0.25); }
+
+    .t-header {
+      display: flex; align-items: center; gap: 0.9rem;
+      padding: 1rem 1.25rem; cursor: pointer; user-select: none;
+    }
+    .t-priority {
+      font-size: 0.58rem; color: var(--gold-dim); letter-spacing: 0.12em;
+      text-transform: uppercase; min-width: 60px; flex-shrink: 0;
+    }
+    .t-route-wrap { flex: 1; min-width: 0; }
+    .t-route { font-size: 0.88rem; color: var(--cream); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .t-arrow { color: var(--gold-dim); font-size: 0.75rem; flex-shrink: 0; }
+    .t-meta { font-size: 0.68rem; color: var(--cream-dim); margin-top: 0.18rem; font-style: italic; }
+    .t-status {
+      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.22rem 0.55rem; border-radius: 2px; border: 1px solid;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .t-chevron { color: var(--cream-dim); font-size: 0.65rem; transition: transform 0.18s; flex-shrink: 0; }
+    .transport-leg.open .t-chevron { transform: rotate(180deg); }
+
+    .t-body { display: none; padding: 0 1.25rem 1.25rem; border-top: 1px solid var(--border); }
+    .transport-leg.open .t-body { display: block; }
+
+    .t-desc { font-size: 0.76rem; color: var(--cream-dim); font-style: italic; line-height: 1.6; padding-top: 0.85rem; margin-bottom: 1.1rem; }
+    .t-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem; }
+    @media (max-width: 700px) { .t-fields { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .t-fields { grid-template-columns: 1fr; } }
+
+    /* ═══════════════════════════════════════
+       COUNTDOWN
+    ═══════════════════════════════════════ */
+    .cd-hero {
+      text-align: center;
+      padding: 2.75rem 2rem;
+      background: var(--bg2);
+      border: 1px solid var(--border-gold);
+      border-radius: 5px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .cd-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%; transform: translateX(-50%);
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cd-number {
+      font-size: clamp(4rem, 12vw, 7rem);
+      color: var(--gold);
+      line-height: 1;
+      font-weight: normal;
+      text-shadow: 0 0 50px rgba(201,168,76,0.25);
+      position: relative;
+    }
+    .cd-unit { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream-dim); margin-top: 0.5rem; }
+    .cd-when { margin-top: 1.5rem; font-size: 0.8rem; color: var(--cream-dim); font-style: italic; }
+
+    .cd-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 2.5rem; }
+    .cd-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 5px; padding: 1.25rem 0.75rem; text-align: center; }
+    .cd-card-num { font-size: 1.85rem; color: var(--cream); line-height: 1; }
+    .cd-card-unit { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-top: 0.35rem; }
+
+    .gold-rule { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border-gold), transparent); margin: 2rem 0; }
+
+    .urgency-title { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 1.1rem; }
+    .urgency-item { display: flex; align-items: flex-start; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
+    .urgency-item:last-child { border-bottom: none; }
+    .urgency-by { font-size: 0.7rem; color: var(--gold); min-width: 80px; flex-shrink: 0; letter-spacing: 0.04em; padding-top: 0.05rem; }
+    .urgency-info { flex: 1; }
+    .urgency-task { font-size: 0.83rem; color: var(--cream); margin-bottom: 0.25rem; }
+    .urgency-sub { font-size: 0.71rem; color: var(--cream-dim); font-style: italic; line-height: 1.5; }
+    .urgency-pill {
+      font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.22rem 0.55rem; border-radius: 2px; border: 1px solid;
+      white-space: nowrap; flex-shrink: 0; align-self: flex-start;
+    }
+    .p-critical { color: #e07060; border-color: rgba(224,112,96,0.3); background: rgba(224,112,96,0.08); }
+    .p-soon     { color: var(--amber); border-color: rgba(196,154,58,0.3); background: rgba(196,154,58,0.08); }
+    .p-ok       { color: var(--green); border-color: rgba(106,158,114,0.3); background: rgba(106,158,114,0.08); }
+
+    /* ═══════════════════════════════════════
+       THE DAY TIMELINE
+    ═══════════════════════════════════════ */
+    .bday-lede { text-align: center; padding: 0 1rem 2rem; }
+    .bday-lede h3 { font-size: 1.05rem; font-weight: normal; color: var(--gold); letter-spacing: 0.15em; }
+    .bday-lede p { margin-top: 0.5rem; font-size: 0.82rem; color: var(--cream-dim); font-style: italic; }
+
+    .day-timeline { position: relative; padding-left: 100px; }
+    .day-timeline::before {
+      content: ''; position: absolute; left: 99px; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(180deg, transparent, var(--border-gold) 3%, var(--border-gold) 97%, transparent);
+    }
+    .day-item { position: relative; padding: 0 0 1.75rem 1.9rem; }
+    .day-item:last-child { padding-bottom: 0; }
+    .day-dot {
+      position: absolute; left: -7px; top: 0.3rem;
+      width: 13px; height: 13px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--gold-dim); z-index: 2;
+    }
+    .day-dot.key {
+      border-color: var(--gold); background: var(--gold);
+      box-shadow: 0 0 14px rgba(201,168,76,0.5);
+    }
+    .day-time {
+      position: absolute; right: 100%; top: 0; width: 88px;
+      padding-right: 1.75rem; text-align: right;
+      font-size: 0.68rem; color: var(--gold-dim); letter-spacing: 0.06em; line-height: 1.8;
+    }
+    .day-title { font-size: 0.92rem; color: var(--cream); margin-bottom: 0.3rem; }
+    .day-desc { font-size: 0.79rem; color: var(--cream-dim); line-height: 1.65; }
+    .day-note {
+      margin-top: 0.55rem; font-size: 0.72rem; color: var(--gold-dim); font-style: italic;
+      border-left: 2px solid var(--gold-dim); padding-left: 0.75rem; line-height: 1.5;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 600px) {
+      .timeline { padding-left: 100px; }
+      .leg-label { width: 85px; padding-right: 1.25rem; }
+      .day-timeline { padding-left: 78px; }
+      .day-time { width: 68px; padding-right: 1.25rem; }
+      .urgency-by { min-width: 62px; }
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <div class="header-top">
-    <h1>Argentina</h1>
-    <span class="header-sub">50th Birthday · Sep 20 – Oct 3, 2026</span>
-  </div>
-  <nav>
-    <button class="active" onclick="showSection('itinerary', this)">Itinerary</button>
-    <button onclick="showSection('bookings', this)">Bookings</button>
-    <button onclick="showSection('countdown', this)">Countdown</button>
-    <button onclick="showSection('the-day', this)">The Day</button>
-  </nav>
+  <div class="eyebrow">A Golden Milestone</div>
+  <h1 class="header-title">Argentina <em>50th Birthday</em></h1>
+  <div class="divider"></div>
+  <div class="header-sub">September 20 – October 3, 2026 &nbsp;·&nbsp; Buenos Aires &nbsp;·&nbsp; Mendoza &nbsp;·&nbsp; Córdoba</div>
 </header>
+
+<nav>
+  <button class="active" onclick="show('itinerary',this)">Itinerary</button>
+  <button onclick="show('bookings',this)">Bookings</button>
+  <button onclick="show('transport',this)">Transport</button>
+  <button onclick="show('countdown',this)">Countdown</button>
+  <button onclick="show('birthday',this)">The Day</button>
+</nav>
 
 <main>
 
-  <!-- ══════════════════════════════════ ITINERARY ══════════════════════════════════ -->
-  <section id="itinerary" class="active">
-    <p class="section-title">Itinerary — 13 nights · Sep 20 – Oct 3, 2026</p>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="card-label">Nights 1–3</span>
-        <span class="card-title">Algodon Mansion — Buenos Aires</span>
-        <span class="card-dates">Sep 20–23</span>
-      </div>
-      <div class="card-body">
-        <p class="card-desc">
-          A sophisticated arrival into one of South America's great cities. The Mansion sits in Palermo, steps from Recoleta —
-          the kind of neighborhood built for walking slowly, with its ornate architecture, shaded streets, and the unhurried
-          rhythm of a city that comes alive after dark. Mornings for wandering, evenings for long meals and excellent wine.
-        </p>
-        <div class="tag-list">
-          <span class="tag">Architecture walks</span>
-          <span class="tag">Recoleta Cemetery</span>
-          <span class="tag">Wine bars</span>
-          <span class="tag">Late dinners</span>
-          <span class="tag">Palermo streets</span>
-          <span class="tag">No agenda</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="card-label">Nights 4–5</span>
-        <span class="card-title">Casa de Uco — Mendoza</span>
-        <span class="card-dates">Sep 23–25</span>
-      </div>
-      <div class="card-body">
-        <p class="card-desc">
-          Vineyard living at its most unhurried. The Andes close and clear on the horizon, rows of vines extending in every
-          direction, and a lodge designed for lingering. One winery tasting per day, no more — this is not a tour, it's a
-          settling in. Long lunches with afternoon light falling across the table. Spa. The specific quality of mountain
-          silence at sunset with a glass already poured.
-        </p>
-        <div class="tag-list">
-          <span class="tag">Vineyard walks</span>
-          <span class="tag">One tasting/day max</span>
-          <span class="tag">Spa</span>
-          <span class="tag">Long lunches</span>
-          <span class="tag">Andean light</span>
-          <span class="tag">Sunset wine</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="card-label">Nights 6–11</span>
-        <span class="card-title">Estancia Los Potreros — Córdoba</span>
-        <span class="card-dates">Sep 25 – Oct 1</span>
-      </div>
-      <div class="card-body">
-        <p class="card-desc">
-          A working estancia in the Córdoba sierras, intimate and lodge-based. Fireplace evenings, horseback rides across
-          open land, long scenic drives through rolling hills. No spa agenda, no excursion schedule — just the deep quiet of
-          a place far from everything, and the particular pleasure of arriving somewhere that asks nothing of you.
-          Arrive on September 25th — the birthday itself. <span class="birthday-badge">Birthday</span>
-        </p>
-        <div class="tag-list">
-          <span class="tag">Fireplace evenings</span>
-          <span class="tag">Horseback riding</span>
-          <span class="tag">Scenic drives</span>
-          <span class="tag">Córdoba sierras</span>
-          <span class="tag">Deep quiet</span>
-          <span class="tag">Sep 25 — Birthday</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <span class="card-label">Nights 12–13</span>
-        <span class="card-title">Buenos Aires — Return</span>
-        <span class="card-dates">Oct 1–3</span>
-      </div>
-      <div class="card-body">
-        <p class="card-desc">
-          A final return to Buenos Aires before departure — one full day to decompress, eat well, and let the trip settle.
-          No agenda. A long lunch somewhere good, a last walk through the city, an early night before the journey home.
-          The kind of ending that gives a trip room to breathe.
-        </p>
-        <div class="tag-list">
-          <span class="tag">Decompress</span>
-          <span class="tag">Long lunch</span>
-          <span class="tag">City walk</span>
-          <span class="tag">Depart Oct 3</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- TRANSPORT -->
-    <div class="transport-section">
-      <p class="transport-title">Transport</p>
-
-      <div class="transport-item priority-urgent">
-        <div>
-          <p class="transport-route">Dakar (DSS) → Buenos Aires (EZE)</p>
-          <p class="transport-detail">International flight via São Paulo GRU or Paris CDG<br>~16–18 hrs total travel time</p>
-          <div class="transport-status">
-            <label>Status:</label>
-            <select id="t1-status" onchange="saveTransport()">
-              <option value="not-started">Not started</option>
-              <option value="in-progress">In progress</option>
-              <option value="confirmed">Confirmed</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <span class="transport-badge badge-urgent">Urgent</span>
-        </div>
-      </div>
-
-      <div class="transport-item priority-urgent">
-        <div>
-          <p class="transport-route">Hamburg (HAM) → Buenos Aires (EZE)</p>
-          <p class="transport-detail">Partner flight — Lufthansa via Frankfurt or Iberia via Madrid<br>~14–16 hrs · Coordinate arrival with Dakar flight</p>
-          <div class="transport-status">
-            <label>Status:</label>
-            <select id="t2-status" onchange="saveTransport()">
-              <option value="not-started">Not started</option>
-              <option value="in-progress">In progress</option>
-              <option value="confirmed">Confirmed</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <span class="transport-badge badge-urgent">Highest Priority</span>
-        </div>
-      </div>
-
-      <div class="transport-item">
-        <div>
-          <p class="transport-route">Buenos Aires (EZE) → Mendoza (MDZ)</p>
-          <p class="transport-detail">Aerolíneas Argentinas domestic · ~2 hrs</p>
-          <div class="transport-status">
-            <label>Status:</label>
-            <select id="t3-status" onchange="saveTransport()">
-              <option value="not-started">Not started</option>
-              <option value="in-progress">In progress</option>
-              <option value="confirmed">Confirmed</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <span class="transport-badge badge-high">High</span>
-        </div>
-      </div>
-
-      <div class="transport-item">
-        <div>
-          <p class="transport-route">Mendoza (MDZ) → Córdoba (COR) + Transfer</p>
-          <p class="transport-detail">Aerolíneas Argentinas · ~1.5 hrs<br>Private transfer: Córdoba airport → Estancia (~1.5 hrs)</p>
-          <div class="transport-status">
-            <label>Status:</label>
-            <select id="t4-status" onchange="saveTransport()">
-              <option value="not-started">Not started</option>
-              <option value="in-progress">In progress</option>
-              <option value="confirmed">Confirmed</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <span class="transport-badge badge-medium">Medium</span>
-        </div>
-      </div>
-
-      <div class="transport-item">
-        <div>
-          <p class="transport-route">Estancia → Buenos Aires (EZE)</p>
-          <p class="transport-detail">Reverse routing: transfer → Córdoba → Buenos Aires</p>
-          <div class="transport-status">
-            <label>Status:</label>
-            <select id="t5-status" onchange="saveTransport()">
-              <option value="not-started">Not started</option>
-              <option value="in-progress">In progress</option>
-              <option value="confirmed">Confirmed</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <span class="transport-badge badge-medium">Medium</span>
-        </div>
-      </div>
-
-      <div class="transport-item">
-        <div>
-          <p class="transport-route">Buenos Aires (EZE) → Dakar (DSS)</p>
-          <p class="transport-detail">International departure · reverse routing</p>
-          <div class="transport-status">
-            <label>Status:</label>
-            <select id="t6-status" onchange="saveTransport()">
-              <option value="not-started">Not started</option>
-              <option value="in-progress">In progress</option>
-              <option value="confirmed">Confirmed</option>
-            </select>
-          </div>
-        </div>
-        <div>
-          <span class="transport-badge badge-medium">Medium</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════ BOOKINGS ══════════════════════════════════ -->
-  <section id="bookings">
-    <p class="section-title">Bookings — Priority Order</p>
-
-    <div id="bookings-container">
-      <!-- injected by JS -->
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════ COUNTDOWN ══════════════════════════════════ -->
-  <section id="countdown">
-    <p class="section-title">Countdown</p>
-
-    <div class="countdown-hero">
-      <div class="countdown-number" id="days-count">—</div>
-      <div class="countdown-label">days until the birthday</div>
-      <div class="countdown-date">Thursday, 25 September 2026 · Estancia Los Potreros</div>
-    </div>
-
-    <p style="font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">Booking Urgency Timeline</p>
-
-    <div class="urgency-grid">
-      <div class="urgency-card urgency-critical">
-        <p class="urgency-title">Book Now — Critical</p>
-        <p class="urgency-desc">Algodon Mansion, Casa de Uco, and Estancia Los Potreros. All three properties are small and highly sought-after. High season in the Southern Hemisphere begins in September. Rooms will not hold.</p>
-        <p class="urgency-window">Window: immediately</p>
-      </div>
-      <div class="urgency-card urgency-high">
-        <p class="urgency-title">Within 2 Weeks — Flights</p>
-        <p class="urgency-desc">International flights Dakar–Buenos Aires and Hamburg–Buenos Aires. Both travelers must coordinate arrival times. Partner flight is the logistical lynchpin of the entire trip.</p>
-        <p class="urgency-window">Window: before mid-June</p>
-      </div>
-      <div class="urgency-card urgency-high">
-        <p class="urgency-title">Within 1 Month — Domestics</p>
-        <p class="urgency-desc">Buenos Aires to Mendoza and Mendoza to Córdoba domestic flights on Aerolíneas Argentinas. These can sell out on weekend dates and September holidays.</p>
-        <p class="urgency-window">Window: by end of June</p>
-      </div>
-      <div class="urgency-card">
-        <p class="urgency-title">When Ready — Birthday Dinner</p>
-        <p class="urgency-desc">The birthday dinner at Estancia Los Potreros. Contact the property directly once accommodation is confirmed — they will arrange the evening's specifics with you.</p>
-        <p class="urgency-window">Window: after estancia booking confirmed</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════ THE DAY ══════════════════════════════════ -->
-  <section id="the-day">
-    <p class="section-title">The Day</p>
-
-    <div class="day-hero">
-      <p class="day-date">Thursday · 25 September 2026</p>
-      <p class="day-title">Fifty</p>
-      <p class="day-subtitle">Estancia Los Potreros · Córdoba Sierras · Argentina</p>
+  <!-- ══════════════ ITINERARY ══════════════ -->
+  <section id="itinerary" class="section active">
+    <div class="section-header">
+      <h2>The Journey</h2>
+      <div class="divider"></div>
+      <p>September 20 – October 3, 2026 &nbsp;·&nbsp; 13 nights</p>
     </div>
 
     <div class="timeline">
 
-      <div class="tl-item">
-        <div class="tl-time">Morning</div>
-        <div class="tl-content">
-          <p class="tl-title">Slow morning</p>
-          <p class="tl-desc">In-room breakfast. No schedule. The kind of morning that asks nothing of you — just light coming in, something warm to drink, and nowhere to be.</p>
+      <div class="leg">
+        <div class="leg-dot"></div>
+        <div class="leg-label">
+          <div class="leg-dates">Sep 20–23</div>
+          <div class="leg-nights">3 nights</div>
+        </div>
+        <div class="leg-card">
+          <div class="leg-hotel">Algodon Mansion</div>
+          <div class="leg-location">Buenos Aires · Palermo</div>
+          <ul class="leg-acts">
+            <li>Arrive, decompress, settle into the city's rhythm — no agenda</li>
+            <li>Recoleta neighborhood: ornate architecture, shaded streets, unhurried pace</li>
+            <li>Wine bars in Palermo — Argentine Malbec begins here</li>
+            <li>Late dinners in the city that doesn't eat before 9 pm</li>
+            <li>Slow mornings at the Mansion before the journey south</li>
+          </ul>
+          <div class="leg-note">The Mansion is boutique and intimate — the ideal cushion before the landscape opens up. Buenos Aires is a city for walking and eating late. Let it be exactly that.</div>
         </div>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-time">Midday</div>
-        <div class="tl-content">
-          <p class="tl-title">Horseback ride</p>
-          <p class="tl-desc">Out across the estancia property. The Córdoba sierras rolling in every direction, the particular silence of open land, the unhurried pace of horses. Back in time for a long afternoon.</p>
+      <div class="leg">
+        <div class="leg-dot"></div>
+        <div class="leg-label">
+          <div class="leg-dates">Sep 23–25</div>
+          <div class="leg-nights">2 nights</div>
+        </div>
+        <div class="leg-card">
+          <div class="leg-hotel">Casa de Uco</div>
+          <div class="leg-location">Mendoza · Uco Valley Vineyards</div>
+          <ul class="leg-acts">
+            <li>Fly Buenos Aires → Mendoza (Aerolíneas, ~2 hrs) — Andes appear immediately on approach</li>
+            <li>Vineyard living: rows of vines to the horizon, mountain light at every hour</li>
+            <li>One winery tasting per day maximum — this is not a tour, it's a settling in</li>
+            <li>Long lunches with afternoon light falling across the table</li>
+            <li>Spa, silence, and the specific quality of dusk in the high desert</li>
+          </ul>
+          <div class="leg-note">Two nights is lean but meaningful — enough to feel the altitude and the quiet before the birthday journey continues south to the sierras.</div>
         </div>
       </div>
 
-      <div class="tl-item">
-        <div class="tl-time">Afternoon</div>
-        <div class="tl-content">
-          <p class="tl-title">Return, hot bath, rest</p>
-          <p class="tl-desc">No program. A long bath. A room to settle into. The afternoon is yours — read, sleep, sit with the mountains, or simply be still inside a beautiful place.</p>
+      <div class="leg">
+        <div class="leg-dot star"></div>
+        <div class="leg-label">
+          <div class="leg-dates">Sep 25–Oct 1</div>
+          <div class="leg-nights">6 nights</div>
+        </div>
+        <div class="leg-card">
+          <span class="badge">★ Birthday Arrival — September 25th</span>
+          <div class="leg-hotel">Estancia Los Potreros</div>
+          <div class="leg-location">Córdoba Sierras · Argentina</div>
+          <ul class="leg-acts">
+            <li>Fly Mendoza → Córdoba (~1.5 hrs), private transfer to the estancia (~1.5 hrs)</li>
+            <li>Arrive on September 25th — the birthday itself — to a fireplace already lit</li>
+            <li>Lodge-based: intimate, unhurried, no resort agenda</li>
+            <li>Horseback riding across open land through the Córdoba sierras</li>
+            <li>Long scenic drives, fireplace evenings, the deep quiet of a working estancia</li>
+            <li>September 25: full birthday sequence — see The Day tab</li>
+          </ul>
+          <div class="leg-note">The Mendoza–Córdoba flight is short and morning-friendly. Arrive at the estancia by early afternoon — time to settle in, ride, and be ready for the birthday evening exactly as it should be.</div>
         </div>
       </div>
 
-      <div class="tl-item tl-highlight">
-        <div class="tl-time">Sunset</div>
-        <div class="tl-content">
-          <p class="tl-title">Champagne with Andean views</p>
-          <p class="tl-desc">The sierras going golden, then rose, then dark. A glass already poured. The moment when everything feels exactly right.</p>
+      <div class="leg">
+        <div class="leg-dot"></div>
+        <div class="leg-label">
+          <div class="leg-dates">Oct 1–3</div>
+          <div class="leg-nights">2 nights</div>
+        </div>
+        <div class="leg-card">
+          <div class="leg-hotel">Buenos Aires — Return</div>
+          <div class="leg-location">Buenos Aires · Departure buffer</div>
+          <ul class="leg-acts">
+            <li>Transfer from estancia → Córdoba → Buenos Aires</li>
+            <li>One full day to decompress, eat well, let the trip settle</li>
+            <li>Long lunch at a favourite porteño restaurant</li>
+            <li>Last walk through the city — Palermo, Recoleta, the streets at dusk</li>
+            <li>International departure October 3rd</li>
+          </ul>
+          <div class="leg-note">Never connect same-day from a remote property to an international flight. This buffer is unhurried insurance — and Buenos Aires earns a second visit.</div>
         </div>
       </div>
 
-      <div class="tl-item tl-highlight">
-        <div class="tl-time">Evening</div>
-        <div class="tl-content">
-          <p class="tl-title">Private dinner by fireplace</p>
-          <p class="tl-desc">Candlelit. Intimate, not performative. An exceptional Malbec. A dinner that knows what it's celebrating — the warmth of a room made just for this, the firelight, the quiet of the sierras outside, and fifty years arriving at exactly this moment.</p>
-        </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ BOOKINGS ══════════════ -->
+  <section id="bookings" class="section">
+    <div class="section-header">
+      <h2>Booking Tracker</h2>
+      <div class="divider"></div>
+      <p>All state saves automatically — close and reopen anytime</p>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-row">
+        <span>Booking Progress</span>
+        <strong id="prog-text">0 of 8 confirmed</strong>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="prog-fill" style="width:0%"></div>
+      </div>
+    </div>
+
+    <div id="booking-list"></div>
+  </section>
+
+  <!-- ══════════════ TRANSPORT ══════════════ -->
+  <section id="transport" class="section">
+    <div class="section-header">
+      <h2>Getting There</h2>
+      <div class="divider"></div>
+      <p>Every flight leg — Dakar and Hamburg to Argentina and back</p>
+    </div>
+
+    <div id="transport-list"></div>
+  </section>
+
+  <!-- ══════════════ COUNTDOWN ══════════════ -->
+  <section id="countdown" class="section">
+    <div class="section-header">
+      <h2>Countdown</h2>
+      <div class="divider"></div>
+      <p>Time until the golden day</p>
+    </div>
+
+    <div class="cd-hero">
+      <div class="cd-number" id="cd-days">—</div>
+      <div class="cd-unit">Days Until September 25th</div>
+      <div class="cd-when">Thursday, 25 September 2026 &nbsp;·&nbsp; Estancia Los Potreros &nbsp;·&nbsp; Córdoba Sierras</div>
+    </div>
+
+    <div class="cd-grid">
+      <div class="cd-card">
+        <div class="cd-card-num" id="cd-weeks">—</div>
+        <div class="cd-card-unit">Weeks</div>
+      </div>
+      <div class="cd-card">
+        <div class="cd-card-num" id="cd-months">—</div>
+        <div class="cd-card-unit">Months</div>
+      </div>
+      <div class="cd-card">
+        <div class="cd-card-num" id="cd-hours">—</div>
+        <div class="cd-card-unit">Hours</div>
+      </div>
+    </div>
+
+    <hr class="gold-rule">
+    <div class="urgency-title">Booking Urgency Timeline</div>
+    <div id="urgency-list"></div>
+  </section>
+
+  <!-- ══════════════ THE DAY ══════════════ -->
+  <section id="birthday" class="section">
+    <div class="section-header">
+      <h2>The Day</h2>
+      <div class="divider"></div>
+      <p>25 September 2026 &nbsp;·&nbsp; Estancia Los Potreros &nbsp;·&nbsp; Córdoba Sierras</p>
+    </div>
+
+    <div class="bday-lede">
+      <h3>The Arrival and the Evening</h3>
+      <p>A short morning flight, then the sierras open up. By afternoon the estancia is yours.</p>
+    </div>
+
+    <div class="day-timeline">
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-time">Morning</div>
+        <div class="day-title">Last Morning at Casa de Uco</div>
+        <div class="day-desc">Wake slowly in the vineyard. A light breakfast before the journey. The Andes on the horizon, the vines still. No hurry — the flight is short and the estancia will wait.</div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-time">Late morning</div>
+        <div class="day-title">Mendoza → Córdoba</div>
+        <div class="day-desc">A short domestic flight — less than ninety minutes. The landscape shifts beneath you: vineyard and altitude giving way to the rolling sierras of Córdoba. The private transfer begins at the airport.</div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot key"></div>
+        <div class="day-time">Early afternoon</div>
+        <div class="day-title">Arrival at Estancia Los Potreros</div>
+        <div class="day-desc">The transfer winds into the hills — and then the estancia appears. A fireplace. An open sky. The deep quiet of a place far from everything. This is where the birthday begins in earnest. Fifty, and you have arrived somewhere extraordinary.</div>
+        <div class="day-note">Coordinate with the property: arrival time, in-room welcome, and the evening's arrangements confirmed well in advance. The estancia team are exceptional at making moments like this feel effortless.</div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-time">Afternoon</div>
+        <div class="day-title">Settle In — Horseback or Rest</div>
+        <div class="day-desc">If the light and energy allow: a short horseback ride out across the property before the afternoon gets long. Or simply: unpack slowly, a hot bath, lie down in a room full of good air. Either is exactly right.</div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot key"></div>
+        <div class="day-time">Sunset</div>
+        <div class="day-title">Champagne with Andean Views</div>
+        <div class="day-desc">The sierras going golden, then rose, then dark. A glass of champagne already poured. The Andean light at its most dramatic. You are fifty years old, exactly here, on September 25th. Take it in without rushing — the evening is long.</div>
+        <div class="day-note">Pre-arrange with the estancia: champagne on ice at the viewing point or terrace. No elaborate setup needed — the landscape does all the work.</div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot key"></div>
+        <div class="day-time">Evening</div>
+        <div class="day-title">Private Dinner by Fireplace</div>
+        <div class="day-desc">Candlelit. Intimate, not performative. The fireplace lit, the sierra darkness outside the windows. An exceptional Malbec — the kind that only Argentina produces at altitude. A dinner that knows what it's celebrating without needing to announce it. Just the two of you, the fire, and fifty years arriving at exactly this moment.</div>
+        <div class="day-note">Confirm with the estancia team: private dinner setting, chosen wine, birthday dessert if desired. State the preference clearly — intimate and understated, not performative. They will understand.</div>
+      </div>
+
+      <div class="day-item">
+        <div class="day-dot"></div>
+        <div class="day-time">Later</div>
+        <div class="day-title">The Fireplace. The Rest of the Night.</div>
+        <div class="day-desc">The sierras are completely dark and utterly silent. The fire burns low. Five more nights remain at the estancia — and that is exactly enough time to let this one fully settle in.</div>
       </div>
 
     </div>
@@ -912,244 +721,450 @@
 </main>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
-
-const BOOKINGS_DATA = [
-  {
-    id: 'b01',
-    num: '01',
-    priority: 'first',
-    priorityLabel: 'FIRST',
-    name: 'Algodon Mansion — Buenos Aires',
-    link: 'https://www.algodonhotels.com/mansion/?_ga=2.234608094.1715693104.1779958277-1579200774.1779958276'
-  },
-  {
-    id: 'b02',
-    num: '02',
-    priority: 'urgent',
-    priorityLabel: 'URGENT',
-    name: 'Casa de Uco — Mendoza',
-    link: 'https://www.mrandmrssmith.com/luxury-hotels/casa-de-uco?s%5Btags%5D=destination.destination%3Asouth-america.argentina%3Bdestination.destination%3Asouth-america.argentina.mendoza'
-  },
-  {
-    id: 'b03',
-    num: '03',
-    priority: 'urgent',
-    priorityLabel: 'URGENT',
-    name: 'Estancia Los Potreros',
-    link: 'https://www.estancialospotreros.com/'
-  },
-  {
-    id: 'b04',
-    num: '04',
-    priority: 'high',
-    priorityLabel: 'HIGH',
-    name: 'Flights — Dakar to Buenos Aires',
-    link: 'https://www.google.com/flights'
-  },
-  {
-    id: 'b05',
-    num: '05',
-    priority: 'high',
-    priorityLabel: 'HIGH',
-    name: 'Partner Flights — Hamburg to Buenos Aires',
-    link: 'https://www.google.com/flights'
-  },
-  {
-    id: 'b06',
-    num: '06',
-    priority: 'high',
-    priorityLabel: 'HIGH',
-    name: 'Buenos Aires to Mendoza — Domestic',
-    link: 'https://www.aerolineas.com.ar'
-  },
-  {
-    id: 'b07',
-    num: '07',
-    priority: 'medium',
-    priorityLabel: 'MEDIUM',
-    name: 'Mendoza to Córdoba — Domestic',
-    link: 'https://www.aerolineas.com.ar'
-  },
-  {
-    id: 'b08',
-    num: '08',
-    priority: 'medium',
-    priorityLabel: 'MEDIUM',
-    name: 'Birthday Dinner — Estancia Los Potreros',
-    link: null
-  }
-];
-
-// ── STATE ──────────────────────────────────────────────────────────────────────
-
-function loadState() {
-  try {
-    return JSON.parse(localStorage.getItem('argentina-trip-state') || '{}');
-  } catch(e) { return {}; }
-}
-
-function saveState(state) {
-  localStorage.setItem('argentina-trip-state', JSON.stringify(state));
-}
-
-let state = loadState();
-
-// ── NAV ──────────────────────────────────────────────────────────────────────
-
-function showSection(id, btn) {
-  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+// ─── Navigation ───────────────────────────────────────────────────────────
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   btn.classList.add('active');
-  if (id === 'countdown') updateCountdown();
+  if (id === 'countdown') renderCountdown();
+  if (id === 'transport') renderTransport();
 }
 
-// ── COUNTDOWN ──────────────────────────────────────────────────────────────────
+// ─── Booking data ─────────────────────────────────────────────────────────
+const BOOKINGS = [
+  {
+    id: 'algodon',
+    priority: '01', label: 'First',
+    name: 'Algodon Mansion — Buenos Aires',
+    desc: 'Sep 20–23 (3 nights). A boutique mansion in Palermo — the perfect arrival into Buenos Aires. Call or email reservations directly. Small property with limited rooms; confirm early to request a quiet room and a preferred floor.',
+    link: 'https://www.algodonhotels.com/mansion/?_ga=2.234608094.1715693104.1779958277-1579200774.1779958276',
+    linkLabel: 'Algodon Mansion',
+  },
+  {
+    id: 'casadeuco',
+    priority: '02', label: 'Urgent',
+    name: 'Casa de Uco — Mendoza',
+    desc: 'Sep 23–25 (2 nights). A vineyard lodge in the Uco Valley with Andean views. Small property, high demand in September shoulder season. Book via Mr & Mrs Smith or contact the property directly. Request a room facing the mountains.',
+    link: 'https://www.mrandmrssmith.com/luxury-hotels/casa-de-uco?s%5Btags%5D=destination.destination%3Asouth-america.argentina%3Bdestination.destination%3Asouth-america.argentina.mendoza',
+    linkLabel: 'Casa de Uco — Mr & Mrs Smith',
+  },
+  {
+    id: 'lospotreros',
+    priority: '03', label: 'Urgent',
+    name: 'Estancia Los Potreros',
+    desc: 'Sep 25 – Oct 1 (6 nights). The heart of the trip — a working estancia in the Córdoba sierras, intimate and lodge-based. Very limited capacity. Contact the property directly. Mention the 50th birthday and the private dinner for September 25th at the time of booking.',
+    link: 'https://www.estancialospotreros.com/',
+    linkLabel: 'Estancia Los Potreros',
+  },
+  {
+    id: 'flights-dkr',
+    priority: '04', label: 'High',
+    name: 'Flights — Dakar to Buenos Aires',
+    desc: 'Return flights from Dakar (DSS) to Buenos Aires EZE. No direct routing exists — expect one stopover, most likely São Paulo GRU or Paris CDG. Lock these once hotel dates are confirmed. Aim to arrive Buenos Aires Sep 20.',
+    link: 'https://www.google.com/flights',
+    linkLabel: 'Search Google Flights',
+  },
+  {
+    id: 'flights-ham',
+    priority: '05', label: 'High',
+    name: 'Partner Flights — Hamburg to Buenos Aires',
+    desc: 'Highest logistical priority — both travelers must coordinate arrivals at EZE to travel onward together. Lufthansa via Frankfurt or Iberia via Madrid, ~14–16 hrs. Book simultaneously with the Dakar flight. Coordinate arrival times carefully.',
+    link: 'https://www.google.com/flights',
+    linkLabel: 'Search Google Flights',
+  },
+  {
+    id: 'domestic-mdz',
+    priority: '06', label: 'High',
+    name: 'Buenos Aires → Mendoza — Aerolíneas Argentinas',
+    desc: 'Sep 23, Buenos Aires EZE to Mendoza MDZ, ~2 hrs. Book on Aerolíneas Argentinas directly. Morning flight preferred to allow full afternoon at Casa de Uco. Can sell out on weekend dates.',
+    link: 'https://www.aerolineas.com.ar',
+    linkLabel: 'Aerolíneas Argentinas',
+  },
+  {
+    id: 'domestic-cor',
+    priority: '07', label: 'Medium',
+    name: 'Mendoza → Córdoba — Domestic',
+    desc: 'Sep 25, Mendoza MDZ to Córdoba COR, ~1.5 hrs on Aerolíneas Argentinas. Morning departure essential — allows arrival at the estancia by early afternoon for the birthday. Check for 8–10 am departure windows.',
+    link: 'https://www.aerolineas.com.ar',
+    linkLabel: 'Aerolíneas Argentinas',
+  },
+  {
+    id: 'bday-dinner',
+    priority: '08', label: 'Medium',
+    name: 'Birthday Dinner — Estancia Los Potreros',
+    desc: 'Coordinate the birthday evening directly with the estancia team: private candlelit dinner by the fireplace, exceptional Malbec, intimate setup. Contact the property once accommodation is confirmed. Confirm 2 weeks before arrival.',
+    link: 'https://www.estancialospotreros.com/',
+    linkLabel: 'Contact Estancia Los Potreros',
+  },
+];
 
-function updateCountdown() {
-  const target = new Date('2026-09-25T00:00:00');
-  const now = new Date();
-  const diff = Math.ceil((target - now) / (1000 * 60 * 60 * 24));
-  document.getElementById('days-count').textContent = diff > 0 ? diff : '0';
+// ─── Transport data ───────────────────────────────────────────────────────
+const TRANSPORT = [
+  {
+    id: 'dkr-eze',
+    priority: 'Urgent', from: 'Dakar (DSS)', to: 'Buenos Aires (EZE)',
+    date: 'Sep 19–20, 2026', duration: '~16–18 hrs total', type: 'International',
+    desc: 'No direct routing from Dakar to Buenos Aires. Best options: via São Paulo GRU (TAP or LATAM) or via Paris CDG (Air France). Allow sufficient layover time — minimum 2 hrs. Aim to land Buenos Aires the morning of Sep 20 for full recovery day before the trip begins.',
+    link: 'https://www.google.com/flights', linkLabel: 'Search Google Flights',
+  },
+  {
+    id: 'ham-eze',
+    priority: 'Highest', from: 'Hamburg (HAM)', to: 'Buenos Aires (EZE)',
+    date: 'Sep 19–20, 2026', duration: '~14–16 hrs total', type: 'International',
+    desc: 'Partner flight — the logistical lynchpin of the entire trip. Lufthansa via Frankfurt FRA (~14 hrs) or Iberia via Madrid MAD (~15 hrs). Both travelers must coordinate arrivals at EZE to journey onward together. Book simultaneously with the Dakar flight and align arrival windows.',
+    link: 'https://www.google.com/flights', linkLabel: 'Search Google Flights',
+  },
+  {
+    id: 'eze-mdz',
+    priority: 'High', from: 'Buenos Aires (EZE)', to: 'Mendoza (MDZ)',
+    date: 'Sep 23, 2026', duration: '~2 hrs', type: 'Domestic',
+    desc: 'Aerolíneas Argentinas domestic flight. Morning departure recommended — leaves the full afternoon for the vineyard. EZE to MDZ runs frequently. Check for flights departing 8–10 am from the domestic terminal at Aeroparque (AEP) — confirm which terminal applies.',
+    link: 'https://www.aerolineas.com.ar', linkLabel: 'Aerolíneas Argentinas',
+  },
+  {
+    id: 'mdz-cor',
+    priority: 'Medium', from: 'Mendoza (MDZ)', to: 'Córdoba (COR)',
+    date: 'Sep 25, 2026', duration: '~1.5 hrs + ~1.5 hr transfer', type: 'Domestic + Transfer',
+    desc: 'Critical timing: morning flight essential. Aerolíneas Argentinas MDZ–COR, followed by a private transfer from Córdoba airport to Estancia Los Potreros (~1.5 hrs into the sierras). Coordinate the private transfer with the estancia at the time of booking — they typically arrange this. Aim to arrive at the estancia no later than 2–3 pm.',
+    link: 'https://www.aerolineas.com.ar', linkLabel: 'Aerolíneas Argentinas',
+  },
+  {
+    id: 'cor-eze',
+    priority: 'Medium', from: 'Estancia → Córdoba (COR)', to: 'Buenos Aires (EZE)',
+    date: 'Oct 1, 2026', duration: '~1.5 hr transfer + ~1.5 hr flight', type: 'Transfer + Domestic',
+    desc: 'Reverse routing: private transfer from the estancia to Córdoba airport, then Aerolíneas Argentinas COR–EZE or AEP. Allow generous time for the transfer — the estancia is remote and road conditions vary. Afternoon arrival in Buenos Aires for the final two nights.',
+    link: 'https://www.aerolineas.com.ar', linkLabel: 'Aerolíneas Argentinas',
+  },
+  {
+    id: 'eze-dkr',
+    priority: 'Medium', from: 'Buenos Aires (EZE)', to: 'Dakar (DSS)',
+    date: 'Oct 3, 2026', duration: '~16–18 hrs total', type: 'International',
+    desc: 'Return routing mirrors the outbound — via São Paulo GRU or Paris CDG. Book the return simultaneously with the outbound to lock in routing. Departs Oct 3 from EZE. Allow plenty of time to reach the international terminal from the Buenos Aires hotel.',
+    link: 'https://www.google.com/flights', linkLabel: 'Search Google Flights',
+  },
+];
+
+// ─── Storage ──────────────────────────────────────────────────────────────
+const STORE_KEY   = 'arg50_bookings_v1';
+const T_STORE_KEY = 'arg50_transport_v1';
+
+function loadState()  { try { return JSON.parse(localStorage.getItem(STORE_KEY)   || '{}'); } catch { return {}; } }
+function saveState(s) { localStorage.setItem(STORE_KEY, JSON.stringify(s)); }
+function loadTState()  { try { return JSON.parse(localStorage.getItem(T_STORE_KEY) || '{}'); } catch { return {}; } }
+function saveTState(s) { localStorage.setItem(T_STORE_KEY, JSON.stringify(s)); }
+
+// ─── Status meta ──────────────────────────────────────────────────────────
+const STATUS_META = {
+  'ns': { label: 'Not Started', cls: 'st-ns' },
+  'ip': { label: 'In Progress', cls: 'st-ip' },
+  'ok': { label: 'Confirmed',   cls: 'st-ok' },
+};
+
+function esc(s) {
+  return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// initial call if on countdown tab (it's not, but no-op if el not visible)
-updateCountdown();
-
-// ── TRANSPORT STATUS ──────────────────────────────────────────────────────────
-
-function saveTransport() {
-  for (let i = 1; i <= 6; i++) {
-    const el = document.getElementById(`t${i}-status`);
-    if (el) state[`t${i}-status`] = el.value;
-  }
-  saveState(state);
-  updateTransportColors();
-}
-
-function updateTransportColors() {
-  for (let i = 1; i <= 6; i++) {
-    const el = document.getElementById(`t${i}-status`);
-    if (el) {
-      el.className = '';
-      el.classList.add('status-' + el.value.replace(/\s+/g, '-'));
-    }
-  }
-}
-
-function loadTransport() {
-  for (let i = 1; i <= 6; i++) {
-    const el = document.getElementById(`t${i}-status`);
-    if (el && state[`t${i}-status`]) {
-      el.value = state[`t${i}-status`];
-    }
-  }
-  updateTransportColors();
-}
-
-// ── BOOKINGS ──────────────────────────────────────────────────────────────────
-
+// ─── Render bookings ──────────────────────────────────────────────────────
 function renderBookings() {
-  const container = document.getElementById('bookings-container');
-  container.innerHTML = '';
+  const state = loadState();
+  const list  = document.getElementById('booking-list');
+  const openItems = new Set([...document.querySelectorAll('.booking-item.open')].map(el => el.dataset.id));
 
-  BOOKINGS_DATA.forEach(b => {
-    const bState = state[b.id] || {};
-    const status = bState.status || 'not-started';
-    const notes = bState.notes || '';
-    const conf = bState.conf || '';
+  let confirmed = 0;
+  let html = '';
 
-    const dot = `<span class="status-dot ${status.replace(/\s+/g,'-')}"></span>`;
+  BOOKINGS.forEach(b => {
+    const s = state[b.id] || { status: 'ns', notes: '', conf: '' };
+    if (s.status === 'ok') confirmed++;
+    const m = STATUS_META[s.status] || STATUS_META['ns'];
+    const isOpen = openItems.has(b.id);
 
-    const linkBtn = b.link
-      ? `<a href="${b.link}" target="_blank" rel="noopener" class="btn-link">↗ Book</a>`
-      : `<span class="btn-link" style="opacity:0.4;cursor:default">Contact property</span>`;
-
-    const html = `
-      <div class="booking-item priority-${b.priority}">
-        <div class="booking-header">
-          <span class="booking-num">${b.num}</span>
-          <span class="transport-badge badge-${b.priority === 'first' ? 'urgent' : b.priority}">${b.priorityLabel}</span>
-          <span class="booking-name">${b.name}</span>
-          ${linkBtn}
+    html += `
+      <div class="booking-item${s.status === 'ok' ? ' confirmed' : ''}${isOpen ? ' open' : ''}" data-id="${b.id}">
+        <div class="b-header" onclick="toggleB('${b.id}')">
+          <div class="b-priority">${b.priority} · ${b.label}</div>
+          <div class="b-name">${b.name}</div>
+          <div class="b-status ${m.cls}">${m.label}</div>
+          <div class="b-chevron">▾</div>
         </div>
-        <div class="booking-controls">
-          <div>
-            <label>Status</label>
-            <select id="${b.id}-status" onchange="updateBooking('${b.id}')">
-              <option value="not-started" ${status === 'not-started' ? 'selected' : ''}>Not started</option>
-              <option value="in-progress" ${status === 'in-progress' ? 'selected' : ''}>In progress</option>
-              <option value="confirmed" ${status === 'confirmed' ? 'selected' : ''}>Confirmed</option>
-            </select>
+        <div class="b-body">
+          <div class="b-desc">${b.desc}</div>
+          <div class="b-link-row">
+            <label>Booking Link</label>
+            <a class="b-link-anchor" href="${b.link}" target="_blank" rel="noopener">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                <path d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M8 1h3v3M11 1 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              ${b.linkLabel}
+            </a>
           </div>
-          <div>
-            <label>Confirmation #</label>
-            <input type="text" id="${b.id}-conf" placeholder="—" value="${conf}" oninput="updateBooking('${b.id}')">
+          <div class="status-btns">
+            <span>Status:</span>
+            <button class="sbtn ${s.status==='ns'?'on-ns':''}" onclick="setStatus('${b.id}','ns',event)">Not Started</button>
+            <button class="sbtn ${s.status==='ip'?'on-ip':''}" onclick="setStatus('${b.id}','ip',event)">In Progress</button>
+            <button class="sbtn ${s.status==='ok'?'on-ok':''}" onclick="setStatus('${b.id}','ok',event)">Confirmed</button>
           </div>
-          <div style="display:flex;align-items:flex-end;">
-            <div style="width:100%;">
-              <label>&nbsp;</label>
-              <div style="font-size:0.72rem;color:var(--muted);padding:8px 0;">${dot}${formatStatus(status)}</div>
+          <div class="b-fields">
+            <div class="fgroup">
+              <label>Confirmation Number</label>
+              <input type="text" placeholder="e.g. ARG-20260920-001"
+                value="${esc(s.conf)}"
+                oninput="saveField('${b.id}','conf',this.value)" />
+            </div>
+            <div class="fgroup">
+              <label>Notes</label>
+              <textarea placeholder="Contact info, key dates, special requests…"
+                oninput="saveField('${b.id}','notes',this.value)">${esc(s.notes)}</textarea>
             </div>
           </div>
         </div>
-        <div class="booking-notes">
-          <label style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Notes</label>
-          <textarea id="${b.id}-notes" placeholder="Add notes..." oninput="updateBooking('${b.id}')">${notes}</textarea>
-        </div>
-      </div>
-    `;
-    container.insertAdjacentHTML('beforeend', html);
-    // apply color class after insertion
-    const sel = document.getElementById(`${b.id}-status`);
-    if (sel) sel.classList.add('status-' + status.replace(/\s+/g, '-'));
+      </div>`;
+  });
+
+  list.innerHTML = html;
+  updateProgress(confirmed);
+}
+
+function updateProgress(confirmed) {
+  const pct = Math.round((confirmed / BOOKINGS.length) * 100);
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-text').textContent = `${confirmed} of ${BOOKINGS.length} confirmed`;
+}
+
+function toggleB(id) {
+  const el = document.querySelector(`.booking-item[data-id="${id}"]`);
+  if (el) el.classList.toggle('open');
+}
+
+function setStatus(id, status, e) {
+  e.stopPropagation();
+  const state = loadState();
+  if (!state[id]) state[id] = { status: 'ns', notes: '', conf: '' };
+  state[id].status = status;
+  saveState(state);
+  renderBookings();
+  requestAnimationFrame(() => {
+    const el = document.querySelector(`.booking-item[data-id="${id}"]`);
+    if (el) el.classList.add('open');
   });
 }
 
-function formatStatus(s) {
-  return { 'not-started': 'Not started', 'in-progress': 'In progress', 'confirmed': 'Confirmed' }[s] || s;
-}
-
-function updateBooking(id) {
-  const statusEl = document.getElementById(`${id}-status`);
-  const notesEl = document.getElementById(`${id}-notes`);
-  const confEl = document.getElementById(`${id}-conf`);
-
-  if (!state[id]) state[id] = {};
-  state[id].status = statusEl ? statusEl.value : 'not-started';
-  state[id].notes = notesEl ? notesEl.value : '';
-  state[id].conf = confEl ? confEl.value : '';
-
+function saveField(id, field, value) {
+  const state = loadState();
+  if (!state[id]) state[id] = { status: 'ns', notes: '', conf: '' };
+  state[id][field] = value;
   saveState(state);
-
-  // update dot
-  const statusVal = state[id].status;
-  // find the dot in the same booking item
-  const item = statusEl ? statusEl.closest('.booking-item') : null;
-  if (item) {
-    const dot = item.querySelector('.status-dot');
-    if (dot) {
-      dot.className = 'status-dot ' + statusVal.replace(/\s+/g, '-');
-    }
-    const label = item.querySelector('.status-dot + *') || (dot && dot.nextSibling);
-    // update status label text
-    const statusContainer = item.querySelector('.booking-controls > div:nth-child(3) div');
-    if (statusContainer) {
-      statusContainer.innerHTML = `<span class="status-dot ${statusVal.replace(/\s+/g, '-')}"></span>${formatStatus(statusVal)}`;
-    }
-    // update select color
-    if (statusEl) {
-      statusEl.className = 'status-' + statusVal.replace(/\s+/g, '-');
-    }
-  }
+  let confirmed = 0;
+  BOOKINGS.forEach(b => { if ((state[b.id] || {}).status === 'ok') confirmed++; });
+  updateProgress(confirmed);
 }
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
+// ─── Render transport ─────────────────────────────────────────────────────
+const PRIORITY_COLOR = {
+  'Highest': 'var(--red)',
+  'Urgent':  '#e07060',
+  'High':    'var(--gold)',
+  'Medium':  'var(--cream-dim)',
+  'Domestic + Transfer': 'var(--cream-dim)',
+  'Transfer + Domestic': 'var(--cream-dim)',
+};
 
+function renderTransport() {
+  const state = loadTState();
+  const list  = document.getElementById('transport-list');
+  if (!list) return;
+
+  const openItems = new Set([...document.querySelectorAll('.transport-leg.open')].map(el => el.dataset.id));
+
+  let html = '';
+  TRANSPORT.forEach(t => {
+    const s = state[t.id] || { status: 'ns', conf: '', airline: '', notes: '' };
+    const m = STATUS_META[s.status] || STATUS_META['ns'];
+    const isOpen = openItems.has(t.id);
+    const typeColor = PRIORITY_COLOR[t.type] || 'var(--cream-dim)';
+
+    html += `
+      <div class="transport-leg${s.status === 'ok' ? ' tconfirmed' : ''}${isOpen ? ' open' : ''}" data-id="${t.id}">
+        <div class="t-header" onclick="toggleT('${t.id}')">
+          <div class="t-priority">${t.priority}</div>
+          <div class="t-route-wrap">
+            <div class="t-route">
+              <span>${t.from}</span>
+              <span class="t-arrow">→</span>
+              <span>${t.to}</span>
+            </div>
+            <div class="t-meta">${t.date} &nbsp;·&nbsp; ${t.duration} &nbsp;·&nbsp; <span style="color:${typeColor}">${t.type}</span></div>
+          </div>
+          <div class="t-status ${m.cls}">${m.label}</div>
+          <div class="t-chevron">▾</div>
+        </div>
+        <div class="t-body">
+          <div class="t-desc">${t.desc}</div>
+          <div class="b-link-row">
+            <label>Booking Link</label>
+            <a class="b-link-anchor" href="${t.link}" target="_blank" rel="noopener">
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+                <path d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                <path d="M8 1h3v3M11 1 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              ${t.linkLabel}
+            </a>
+          </div>
+          <div class="status-btns">
+            <span>Status:</span>
+            <button class="sbtn ${s.status==='ns'?'on-ns':''}" onclick="setTStatus('${t.id}','ns',event)">Not Started</button>
+            <button class="sbtn ${s.status==='ip'?'on-ip':''}" onclick="setTStatus('${t.id}','ip',event)">In Progress</button>
+            <button class="sbtn ${s.status==='ok'?'on-ok':''}" onclick="setTStatus('${t.id}','ok',event)">Confirmed</button>
+          </div>
+          <div class="t-fields">
+            <div class="fgroup">
+              <label>Confirmation / PNR</label>
+              <input type="text" placeholder="e.g. LA-XJ72KP"
+                value="${esc(s.conf)}"
+                oninput="saveTField('${t.id}','conf',this.value)" />
+            </div>
+            <div class="fgroup">
+              <label>Airline / Carrier</label>
+              <input type="text" placeholder="e.g. Aerolíneas Argentinas AR1234"
+                value="${esc(s.airline||'')}"
+                oninput="saveTField('${t.id}','airline',this.value)" />
+            </div>
+            <div class="fgroup">
+              <label>Notes</label>
+              <input type="text" placeholder="Departure time, terminal, seat…"
+                value="${esc(s.notes)}"
+                oninput="saveTField('${t.id}','notes',this.value)" />
+            </div>
+          </div>
+        </div>
+      </div>`;
+  });
+
+  list.innerHTML = html;
+}
+
+function toggleT(id) {
+  const el = document.querySelector(`.transport-leg[data-id="${id}"]`);
+  if (el) el.classList.toggle('open');
+}
+
+function setTStatus(id, status, e) {
+  e.stopPropagation();
+  const state = loadTState();
+  if (!state[id]) state[id] = { status: 'ns', conf: '', airline: '', notes: '' };
+  state[id].status = status;
+  saveTState(state);
+  renderTransport();
+  requestAnimationFrame(() => {
+    const el = document.querySelector(`.transport-leg[data-id="${id}"]`);
+    if (el) el.classList.add('open');
+  });
+}
+
+function saveTField(id, field, value) {
+  const state = loadTState();
+  if (!state[id]) state[id] = { status: 'ns', conf: '', airline: '', notes: '' };
+  state[id][field] = value;
+  saveTState(state);
+}
+
+// ─── Countdown ────────────────────────────────────────────────────────────
+function renderCountdown() {
+  const now  = new Date();
+  const bday = new Date('2026-09-25T00:00:00');
+  const diff = bday - now;
+
+  if (diff <= 0) {
+    document.getElementById('cd-days').textContent  = '★';
+    document.getElementById('cd-weeks').textContent  = '0';
+    document.getElementById('cd-months').textContent = '0';
+    document.getElementById('cd-hours').textContent  = '0';
+    document.getElementById('urgency-list').innerHTML =
+      '<div class="urgency-item"><div class="urgency-info"><div class="urgency-task">The day has arrived.</div></div></div>';
+    return;
+  }
+
+  const days   = Math.floor(diff / 864e5);
+  const weeks  = Math.floor(days / 7);
+  const months = Math.floor(days / 30.44);
+  const hours  = Math.floor(diff / 36e5);
+
+  document.getElementById('cd-days').textContent   = days.toLocaleString();
+  document.getElementById('cd-weeks').textContent  = weeks;
+  document.getElementById('cd-months').textContent = months;
+  document.getElementById('cd-hours').textContent  = hours.toLocaleString();
+
+  const URGENCIES = [
+    {
+      by: new Date('2026-05-15'),
+      task: 'Book Algodon Mansion — Buenos Aires',
+      sub: 'Small boutique property. Call or email directly. Confirm room category and any special requests at the time of booking.',
+      threshold: 14,
+    },
+    {
+      by: new Date('2026-05-20'),
+      task: 'Book Casa de Uco — Mendoza',
+      sub: 'Limited vineyard lodge in high demand for September. Book via Mr & Mrs Smith or contact the property directly.',
+      threshold: 14,
+    },
+    {
+      by: new Date('2026-05-20'),
+      task: 'Book Estancia Los Potreros',
+      sub: 'Very limited capacity — the most critical accommodation booking. Contact directly and mention the September 25th birthday.',
+      threshold: 14,
+    },
+    {
+      by: new Date('2026-06-15'),
+      task: 'Book International Flights — Dakar and Hamburg',
+      sub: 'Both travelers must lock flights simultaneously and coordinate arrivals at EZE. Hamburg flight is the logistical lynchpin.',
+      threshold: 21,
+    },
+    {
+      by: new Date('2026-07-01'),
+      task: 'Book Domestic Flights — Aerolíneas Argentinas',
+      sub: 'Buenos Aires → Mendoza (Sep 23) and Mendoza → Córdoba (Sep 25, morning essential). Book together.',
+      threshold: 30,
+    },
+    {
+      by: new Date('2026-09-10'),
+      task: 'Birthday Dinner Arrangements — Estancia Los Potreros',
+      sub: 'Contact the estancia team: private candlelit dinner by fireplace, wine selection, any special setup. Confirm 2 weeks before arrival.',
+      threshold: 10,
+    },
+  ];
+
+  let ul = '';
+  URGENCIES.forEach(u => {
+    const dtl = Math.floor((u.by - now) / 864e5);
+    const dateStr = u.by.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+    let pillCls, pillTxt;
+
+    if (dtl < 0)                    { pillCls = 'p-critical'; pillTxt = 'OVERDUE'; }
+    else if (dtl <= u.threshold)    { pillCls = 'p-critical'; pillTxt = `${dtl}d left`; }
+    else if (dtl <= u.threshold*2.5){ pillCls = 'p-soon';     pillTxt = `${dtl}d left`; }
+    else                            { pillCls = 'p-ok';       pillTxt = `${dtl}d left`; }
+
+    ul += `
+      <div class="urgency-item">
+        <div class="urgency-by">By ${dateStr}</div>
+        <div class="urgency-info">
+          <div class="urgency-task">${u.task}</div>
+          <div class="urgency-sub">${u.sub}</div>
+        </div>
+        <div class="urgency-pill ${pillCls}">${pillTxt}</div>
+      </div>`;
+  });
+
+  document.getElementById('urgency-list').innerHTML = ul;
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────
 renderBookings();
-loadTransport();
-updateCountdown();
+renderTransport();
+renderCountdown();
+setInterval(renderCountdown, 60000);
 </script>
 
 </body>
