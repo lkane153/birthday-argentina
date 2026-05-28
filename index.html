@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50th Birthday — Argentina</title>
+<style>
+  :root {
+    --bg: #0f0e0c;
+    --bg2: #181510;
+    --bg3: #1f1b14;
+    --gold: #c9a84c;
+    --gold-light: #e4c97e;
+    --gold-dim: #7a6330;
+    --cream: #f0e6cc;
+    --cream-dim: #a09070;
+    --text: #e8dcc8;
+    --muted: #7a6e5a;
+    --border: #2a2418;
+    --border2: #3a3020;
+    --red: #c0392b;
+    --green: #27ae60;
+    --orange: #d35400;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border2);
+    padding: 28px 40px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: baseline;
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 1.35rem;
+    font-weight: normal;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .header-sub {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  nav {
+    display: flex;
+    gap: 0;
+  }
+
+  nav button {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    color: var(--cream-dim);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    padding: 10px 24px;
+    text-transform: uppercase;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  nav button:hover { color: var(--cream); }
+
+  nav button.active {
+    border-bottom-color: var(--gold);
+    color: var(--gold-light);
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 48px 40px;
+  }
+
+  section { display: none; }
+  section.active { display: block; }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 36px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border2);
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-radius: 2px;
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+
+  .card-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .card-title {
+    font-size: 1.05rem;
+    color: var(--cream);
+    font-weight: normal;
+  }
+
+  .card-dates {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-left: auto;
+    letter-spacing: 0.08em;
+  }
+
+  .card-body {
+    padding: 20px 24px;
+  }
+
+  .card-desc {
+    font-size: 0.85rem;
+    color: var(--cream-dim);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    border: 1px solid var(--border2);
+    padding: 4px 10px;
+    border-radius: 1px;
+  }
+
+  /* ── TRANSPORT ── */
+  .transport-section {
+    margin-top: 48px;
+  }
+
+  .transport-title {
+    font-size: 0.62rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .transport-item {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-left: 3px solid var(--border2);
+    margin-bottom: 12px;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .transport-item.priority-high { border-left-color: var(--gold); }
+  .transport-item.priority-urgent { border-left-color: var(--red); }
+
+  .transport-route {
+    font-size: 0.9rem;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .transport-detail {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .transport-badge {
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 1px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+
+  .badge-urgent { background: rgba(192,57,43,0.15); color: #e07060; border: 1px solid rgba(192,57,43,0.3); }
+  .badge-high { background: rgba(201,168,76,0.12); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
+  .badge-medium { background: rgba(120,100,60,0.15); color: var(--gold-dim); border: 1px solid var(--border2); }
+
+  .transport-status {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .transport-status label {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ── BOOKINGS ── */
+  .booking-item {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    border-left: 3px solid var(--border2);
+    margin-bottom: 14px;
+    padding: 20px 24px;
+  }
+
+  .booking-item.priority-first { border-left-color: var(--gold-light); }
+  .booking-item.priority-urgent { border-left-color: var(--red); }
+  .booking-item.priority-high { border-left-color: var(--gold); }
+  .booking-item.priority-medium { border-left-color: var(--gold-dim); }
+
+  .booking-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .booking-num {
+    font-size: 0.62rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    min-width: 20px;
+  }
+
+  .booking-name {
+    font-size: 0.95rem;
+    color: var(--cream);
+    flex: 1;
+  }
+
+  .booking-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .booking-controls label {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .booking-notes {
+    margin-top: 10px;
+  }
+
+  /* ── FORM ELEMENTS ── */
+  select, input[type="text"] {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.8rem;
+    padding: 7px 10px;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.2s;
+    border-radius: 1px;
+  }
+
+  select:focus, input[type="text"]:focus {
+    border-color: var(--gold-dim);
+  }
+
+  select option { background: var(--bg3); }
+
+  textarea {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    color: var(--cream-dim);
+    font-family: inherit;
+    font-size: 0.78rem;
+    padding: 8px 10px;
+    width: 100%;
+    outline: none;
+    resize: vertical;
+    min-height: 52px;
+    line-height: 1.5;
+    border-radius: 1px;
+  }
+
+  textarea:focus { border-color: var(--gold-dim); }
+  textarea::placeholder { color: var(--muted); opacity: 0.7; }
+  input::placeholder { color: var(--muted); opacity: 0.7; }
+
+  .btn-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: 1px solid var(--border2);
+    color: var(--gold-dim);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    padding: 6px 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+    border-radius: 1px;
+  }
+
+  .btn-link:hover {
+    border-color: var(--gold);
+    color: var(--gold-light);
+  }
+
+  /* status dot */
+  .status-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  .status-dot.not-started { background: var(--muted); }
+  .status-dot.in-progress { background: var(--orange); }
+  .status-dot.confirmed { background: var(--green); }
+
+  /* ── COUNTDOWN ── */
+  .countdown-hero {
+    text-align: center;
+    padding: 60px 0 48px;
+    border-bottom: 1px solid var(--border2);
+    margin-bottom: 48px;
+  }
+
+  .countdown-number {
+    font-size: 7rem;
+    line-height: 1;
+    color: var(--gold-light);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  .countdown-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .countdown-date {
+    font-size: 0.85rem;
+    color: var(--cream-dim);
+    margin-top: 20px;
+    letter-spacing: 0.1em;
+  }
+
+  .urgency-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .urgency-card {
+    background: var(--bg2);
+    border: 1px solid var(--border2);
+    padding: 20px;
+  }
+
+  .urgency-title {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .urgency-desc {
+    font-size: 0.8rem;
+    color: var(--cream-dim);
+    line-height: 1.7;
+  }
+
+  .urgency-window {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  .urgency-critical .urgency-title { color: #e07060; }
+  .urgency-high .urgency-title { color: var(--gold-light); }
+
+  /* ── THE DAY ── */
+  .day-hero {
+    text-align: center;
+    padding: 48px 0 40px;
+    border-bottom: 1px solid var(--border2);
+    margin-bottom: 48px;
+  }
+
+  .day-date {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .day-title {
+    font-size: 2.2rem;
+    color: var(--cream);
+    font-weight: normal;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .day-subtitle {
+    font-size: 0.82rem;
+    color: var(--muted);
+    letter-spacing: 0.15em;
+  }
+
+  .timeline {
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 80px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--border2);
+  }
+
+  .tl-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0 28px;
+    margin-bottom: 0;
+    position: relative;
+  }
+
+  .tl-time {
+    text-align: right;
+    padding: 28px 0;
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    padding-top: 32px;
+  }
+
+  .tl-content {
+    padding: 28px 0 28px 28px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .tl-item:last-child .tl-content { border-bottom: none; }
+
+  .tl-content::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 36px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--gold-dim);
+  }
+
+  .tl-title {
+    font-size: 0.92rem;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .tl-desc {
+    font-size: 0.8rem;
+    color: var(--cream-dim);
+    line-height: 1.75;
+  }
+
+  .tl-highlight .tl-content::before {
+    background: var(--gold);
+    border-color: var(--gold-light);
+    width: 11px;
+    height: 11px;
+    left: -6px;
+    top: 35px;
+  }
+
+  .tl-highlight .tl-title { color: var(--gold-light); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border2);
+    margin: 36px 0;
+  }
+
+  /* birthday badge */
+  .birthday-badge {
+    display: inline-block;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    padding: 3px 10px;
+    border-radius: 1px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+
+  /* status select coloring */
+  select.status-not-started { color: var(--muted); }
+  select.status-in-progress { color: #d4804a; }
+  select.status-confirmed { color: #5aaa78; }
+
+  /* responsive */
+  @media (max-width: 640px) {
+    header { padding: 20px 20px 0; }
+    main { padding: 32px 20px; }
+    .urgency-grid { grid-template-columns: 1fr; }
+    .booking-controls { grid-template-columns: 1fr; }
+    nav button { padding: 10px 14px; font-size: 0.65rem; }
+    .countdown-number { font-size: 5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <h1>Argentina</h1>
+    <span class="header-sub">50th Birthday · September 2026</span>
+  </div>
+  <nav>
+    <button class="active" onclick="showSection('itinerary', this)">Itinerary</button>
+    <button onclick="showSection('bookings', this)">Bookings</button>
+    <button onclick="showSection('countdown', this)">Countdown</button>
+    <button onclick="showSection('the-day', this)">The Day</button>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ══════════════════════════════════ ITINERARY ══════════════════════════════════ -->
+  <section id="itinerary" class="active">
+    <p class="section-title">Itinerary — 11 nights · September 2026</p>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-label">Nights 1–3</span>
+        <span class="card-title">Algodon Mansion — Buenos Aires</span>
+        <span class="card-dates">Sep 14–17</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">
+          A sophisticated arrival into one of South America's great cities. The Mansion sits in Palermo, steps from Recoleta —
+          the kind of neighborhood built for walking slowly, with its ornate architecture, shaded streets, and the unhurried
+          rhythm of a city that comes alive after dark. Mornings for wandering, evenings for long meals and excellent wine.
+        </p>
+        <div class="tag-list">
+          <span class="tag">Architecture walks</span>
+          <span class="tag">Recoleta Cemetery</span>
+          <span class="tag">Wine bars</span>
+          <span class="tag">Late dinners</span>
+          <span class="tag">Palermo streets</span>
+          <span class="tag">No agenda</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-label">Nights 4–7</span>
+        <span class="card-title">Casa de Uco — Mendoza</span>
+        <span class="card-dates">Sep 17–21</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">
+          Vineyard living at its most unhurried. The Andes close and clear on the horizon, rows of vines extending in every
+          direction, and a lodge designed for lingering. One winery tasting per day, no more — this is not a tour, it's a
+          settling in. Long lunches with afternoon light falling across the table. Spa. The specific quality of mountain
+          silence at sunset with a glass already poured.
+        </p>
+        <div class="tag-list">
+          <span class="tag">Vineyard walks</span>
+          <span class="tag">One tasting/day max</span>
+          <span class="tag">Spa</span>
+          <span class="tag">Long lunches</span>
+          <span class="tag">Andean light</span>
+          <span class="tag">Sunset wine</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <span class="card-label">Nights 8–11</span>
+        <span class="card-title">Estancia Los Potreros — Córdoba</span>
+        <span class="card-dates">Sep 21–25</span>
+      </div>
+      <div class="card-body">
+        <p class="card-desc">
+          A working estancia in the Córdoba sierras, intimate and lodge-based. Fireplace evenings, horseback rides across
+          open land, long scenic drives through rolling hills. No spa agenda, no excursion schedule — just the deep quiet of
+          a place far from everything, and the particular pleasure of arriving somewhere that asks nothing of you.
+          Night 2 here is September 25th. <span class="birthday-badge">Birthday</span>
+        </p>
+        <div class="tag-list">
+          <span class="tag">Fireplace evenings</span>
+          <span class="tag">Horseback riding</span>
+          <span class="tag">Scenic drives</span>
+          <span class="tag">Córdoba sierras</span>
+          <span class="tag">Deep quiet</span>
+          <span class="tag">Sep 25 — Birthday</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRANSPORT -->
+    <div class="transport-section">
+      <p class="transport-title">Transport</p>
+
+      <div class="transport-item priority-urgent">
+        <div>
+          <p class="transport-route">Dakar (DSS) → Buenos Aires (EZE)</p>
+          <p class="transport-detail">International flight via São Paulo GRU or Paris CDG<br>~16–18 hrs total travel time</p>
+          <div class="transport-status">
+            <label>Status:</label>
+            <select id="t1-status" onchange="saveTransport()">
+              <option value="not-started">Not started</option>
+              <option value="in-progress">In progress</option>
+              <option value="confirmed">Confirmed</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <span class="transport-badge badge-urgent">Urgent</span>
+        </div>
+      </div>
+
+      <div class="transport-item priority-urgent">
+        <div>
+          <p class="transport-route">Hamburg (HAM) → Buenos Aires (EZE)</p>
+          <p class="transport-detail">Partner flight — Lufthansa via Frankfurt or Iberia via Madrid<br>~14–16 hrs · Coordinate arrival with Dakar flight</p>
+          <div class="transport-status">
+            <label>Status:</label>
+            <select id="t2-status" onchange="saveTransport()">
+              <option value="not-started">Not started</option>
+              <option value="in-progress">In progress</option>
+              <option value="confirmed">Confirmed</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <span class="transport-badge badge-urgent">Highest Priority</span>
+        </div>
+      </div>
+
+      <div class="transport-item">
+        <div>
+          <p class="transport-route">Buenos Aires (EZE) → Mendoza (MDZ)</p>
+          <p class="transport-detail">Aerolíneas Argentinas domestic · ~2 hrs</p>
+          <div class="transport-status">
+            <label>Status:</label>
+            <select id="t3-status" onchange="saveTransport()">
+              <option value="not-started">Not started</option>
+              <option value="in-progress">In progress</option>
+              <option value="confirmed">Confirmed</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <span class="transport-badge badge-high">High</span>
+        </div>
+      </div>
+
+      <div class="transport-item">
+        <div>
+          <p class="transport-route">Mendoza (MDZ) → Córdoba (COR) + Transfer</p>
+          <p class="transport-detail">Aerolíneas Argentinas · ~1.5 hrs<br>Private transfer: Córdoba airport → Estancia (~1.5 hrs)</p>
+          <div class="transport-status">
+            <label>Status:</label>
+            <select id="t4-status" onchange="saveTransport()">
+              <option value="not-started">Not started</option>
+              <option value="in-progress">In progress</option>
+              <option value="confirmed">Confirmed</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <span class="transport-badge badge-medium">Medium</span>
+        </div>
+      </div>
+
+      <div class="transport-item">
+        <div>
+          <p class="transport-route">Estancia → Buenos Aires (EZE)</p>
+          <p class="transport-detail">Reverse routing: transfer → Córdoba → Buenos Aires</p>
+          <div class="transport-status">
+            <label>Status:</label>
+            <select id="t5-status" onchange="saveTransport()">
+              <option value="not-started">Not started</option>
+              <option value="in-progress">In progress</option>
+              <option value="confirmed">Confirmed</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <span class="transport-badge badge-medium">Medium</span>
+        </div>
+      </div>
+
+      <div class="transport-item">
+        <div>
+          <p class="transport-route">Buenos Aires (EZE) → Dakar (DSS)</p>
+          <p class="transport-detail">International departure · reverse routing</p>
+          <div class="transport-status">
+            <label>Status:</label>
+            <select id="t6-status" onchange="saveTransport()">
+              <option value="not-started">Not started</option>
+              <option value="in-progress">In progress</option>
+              <option value="confirmed">Confirmed</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <span class="transport-badge badge-medium">Medium</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ BOOKINGS ══════════════════════════════════ -->
+  <section id="bookings">
+    <p class="section-title">Bookings — Priority Order</p>
+
+    <div id="bookings-container">
+      <!-- injected by JS -->
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ COUNTDOWN ══════════════════════════════════ -->
+  <section id="countdown">
+    <p class="section-title">Countdown</p>
+
+    <div class="countdown-hero">
+      <div class="countdown-number" id="days-count">—</div>
+      <div class="countdown-label">days until the birthday</div>
+      <div class="countdown-date">Thursday, 25 September 2026 · Estancia Los Potreros</div>
+    </div>
+
+    <p style="font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">Booking Urgency Timeline</p>
+
+    <div class="urgency-grid">
+      <div class="urgency-card urgency-critical">
+        <p class="urgency-title">Book Now — Critical</p>
+        <p class="urgency-desc">Algodon Mansion, Casa de Uco, and Estancia Los Potreros. All three properties are small and highly sought-after. High season in the Southern Hemisphere begins in September. Rooms will not hold.</p>
+        <p class="urgency-window">Window: immediately</p>
+      </div>
+      <div class="urgency-card urgency-high">
+        <p class="urgency-title">Within 2 Weeks — Flights</p>
+        <p class="urgency-desc">International flights Dakar–Buenos Aires and Hamburg–Buenos Aires. Both travelers must coordinate arrival times. Partner flight is the logistical lynchpin of the entire trip.</p>
+        <p class="urgency-window">Window: before mid-June</p>
+      </div>
+      <div class="urgency-card urgency-high">
+        <p class="urgency-title">Within 1 Month — Domestics</p>
+        <p class="urgency-desc">Buenos Aires to Mendoza and Mendoza to Córdoba domestic flights on Aerolíneas Argentinas. These can sell out on weekend dates and September holidays.</p>
+        <p class="urgency-window">Window: by end of June</p>
+      </div>
+      <div class="urgency-card">
+        <p class="urgency-title">When Ready — Birthday Dinner</p>
+        <p class="urgency-desc">The birthday dinner at Estancia Los Potreros. Contact the property directly once accommodation is confirmed — they will arrange the evening's specifics with you.</p>
+        <p class="urgency-window">Window: after estancia booking confirmed</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════ THE DAY ══════════════════════════════════ -->
+  <section id="the-day">
+    <p class="section-title">The Day</p>
+
+    <div class="day-hero">
+      <p class="day-date">Thursday · 25 September 2026</p>
+      <p class="day-title">Fifty</p>
+      <p class="day-subtitle">Estancia Los Potreros · Córdoba Sierras · Argentina</p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-time">Morning</div>
+        <div class="tl-content">
+          <p class="tl-title">Slow morning</p>
+          <p class="tl-desc">In-room breakfast. No schedule. The kind of morning that asks nothing of you — just light coming in, something warm to drink, and nowhere to be.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">Midday</div>
+        <div class="tl-content">
+          <p class="tl-title">Horseback ride</p>
+          <p class="tl-desc">Out across the estancia property. The Córdoba sierras rolling in every direction, the particular silence of open land, the unhurried pace of horses. Back in time for a long afternoon.</p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">Afternoon</div>
+        <div class="tl-content">
+          <p class="tl-title">Return, hot bath, rest</p>
+          <p class="tl-desc">No program. A long bath. A room to settle into. The afternoon is yours — read, sleep, sit with the mountains, or simply be still inside a beautiful place.</p>
+        </div>
+      </div>
+
+      <div class="tl-item tl-highlight">
+        <div class="tl-time">Sunset</div>
+        <div class="tl-content">
+          <p class="tl-title">Champagne with Andean views</p>
+          <p class="tl-desc">The sierras going golden, then rose, then dark. A glass already poured. The moment when everything feels exactly right.</p>
+        </div>
+      </div>
+
+      <div class="tl-item tl-highlight">
+        <div class="tl-time">Evening</div>
+        <div class="tl-content">
+          <p class="tl-title">Private dinner by fireplace</p>
+          <p class="tl-desc">Candlelit. Intimate, not performative. An exceptional Malbec. A dinner that knows what it's celebrating — the warmth of a room made just for this, the firelight, the quiet of the sierras outside, and fifty years arriving at exactly this moment.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+
+const BOOKINGS_DATA = [
+  {
+    id: 'b01',
+    num: '01',
+    priority: 'first',
+    priorityLabel: 'FIRST',
+    name: 'Algodon Mansion — Buenos Aires',
+    link: 'https://www.algodon.com/mansion'
+  },
+  {
+    id: 'b02',
+    num: '02',
+    priority: 'urgent',
+    priorityLabel: 'URGENT',
+    name: 'Casa de Uco — Mendoza',
+    link: 'https://www.casadeuco.com'
+  },
+  {
+    id: 'b03',
+    num: '03',
+    priority: 'urgent',
+    priorityLabel: 'URGENT',
+    name: 'Estancia Los Potreros',
+    link: 'https://www.lospotreros.com'
+  },
+  {
+    id: 'b04',
+    num: '04',
+    priority: 'high',
+    priorityLabel: 'HIGH',
+    name: 'Flights — Dakar to Buenos Aires',
+    link: 'https://www.google.com/flights'
+  },
+  {
+    id: 'b05',
+    num: '05',
+    priority: 'high',
+    priorityLabel: 'HIGH',
+    name: 'Partner Flights — Hamburg to Buenos Aires',
+    link: 'https://www.google.com/flights'
+  },
+  {
+    id: 'b06',
+    num: '06',
+    priority: 'high',
+    priorityLabel: 'HIGH',
+    name: 'Buenos Aires to Mendoza — Domestic',
+    link: 'https://www.aerolineas.com.ar'
+  },
+  {
+    id: 'b07',
+    num: '07',
+    priority: 'medium',
+    priorityLabel: 'MEDIUM',
+    name: 'Mendoza to Córdoba — Domestic',
+    link: 'https://www.aerolineas.com.ar'
+  },
+  {
+    id: 'b08',
+    num: '08',
+    priority: 'medium',
+    priorityLabel: 'MEDIUM',
+    name: 'Birthday Dinner — Estancia Los Potreros',
+    link: null
+  }
+];
+
+// ── STATE ──────────────────────────────────────────────────────────────────────
+
+function loadState() {
+  try {
+    return JSON.parse(localStorage.getItem('argentina-trip-state') || '{}');
+  } catch(e) { return {}; }
+}
+
+function saveState(state) {
+  localStorage.setItem('argentina-trip-state', JSON.stringify(state));
+}
+
+let state = loadState();
+
+// ── NAV ──────────────────────────────────────────────────────────────────────
+
+function showSection(id, btn) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'countdown') updateCountdown();
+}
+
+// ── COUNTDOWN ──────────────────────────────────────────────────────────────────
+
+function updateCountdown() {
+  const target = new Date('2026-09-25T00:00:00');
+  const now = new Date();
+  const diff = Math.ceil((target - now) / (1000 * 60 * 60 * 24));
+  document.getElementById('days-count').textContent = diff > 0 ? diff : '0';
+}
+
+// initial call if on countdown tab (it's not, but no-op if el not visible)
+updateCountdown();
+
+// ── TRANSPORT STATUS ──────────────────────────────────────────────────────────
+
+function saveTransport() {
+  for (let i = 1; i <= 6; i++) {
+    const el = document.getElementById(`t${i}-status`);
+    if (el) state[`t${i}-status`] = el.value;
+  }
+  saveState(state);
+  updateTransportColors();
+}
+
+function updateTransportColors() {
+  for (let i = 1; i <= 6; i++) {
+    const el = document.getElementById(`t${i}-status`);
+    if (el) {
+      el.className = '';
+      el.classList.add('status-' + el.value.replace(/\s+/g, '-'));
+    }
+  }
+}
+
+function loadTransport() {
+  for (let i = 1; i <= 6; i++) {
+    const el = document.getElementById(`t${i}-status`);
+    if (el && state[`t${i}-status`]) {
+      el.value = state[`t${i}-status`];
+    }
+  }
+  updateTransportColors();
+}
+
+// ── BOOKINGS ──────────────────────────────────────────────────────────────────
+
+function renderBookings() {
+  const container = document.getElementById('bookings-container');
+  container.innerHTML = '';
+
+  BOOKINGS_DATA.forEach(b => {
+    const bState = state[b.id] || {};
+    const status = bState.status || 'not-started';
+    const notes = bState.notes || '';
+    const conf = bState.conf || '';
+
+    const dot = `<span class="status-dot ${status.replace(/\s+/g,'-')}"></span>`;
+
+    const linkBtn = b.link
+      ? `<a href="${b.link}" target="_blank" rel="noopener" class="btn-link">↗ Book</a>`
+      : `<span class="btn-link" style="opacity:0.4;cursor:default">Contact property</span>`;
+
+    const html = `
+      <div class="booking-item priority-${b.priority}">
+        <div class="booking-header">
+          <span class="booking-num">${b.num}</span>
+          <span class="transport-badge badge-${b.priority === 'first' ? 'urgent' : b.priority}">${b.priorityLabel}</span>
+          <span class="booking-name">${b.name}</span>
+          ${linkBtn}
+        </div>
+        <div class="booking-controls">
+          <div>
+            <label>Status</label>
+            <select id="${b.id}-status" onchange="updateBooking('${b.id}')">
+              <option value="not-started" ${status === 'not-started' ? 'selected' : ''}>Not started</option>
+              <option value="in-progress" ${status === 'in-progress' ? 'selected' : ''}>In progress</option>
+              <option value="confirmed" ${status === 'confirmed' ? 'selected' : ''}>Confirmed</option>
+            </select>
+          </div>
+          <div>
+            <label>Confirmation #</label>
+            <input type="text" id="${b.id}-conf" placeholder="—" value="${conf}" oninput="updateBooking('${b.id}')">
+          </div>
+          <div style="display:flex;align-items:flex-end;">
+            <div style="width:100%;">
+              <label>&nbsp;</label>
+              <div style="font-size:0.72rem;color:var(--muted);padding:8px 0;">${dot}${formatStatus(status)}</div>
+            </div>
+          </div>
+        </div>
+        <div class="booking-notes">
+          <label style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px;">Notes</label>
+          <textarea id="${b.id}-notes" placeholder="Add notes..." oninput="updateBooking('${b.id}')">${notes}</textarea>
+        </div>
+      </div>
+    `;
+    container.insertAdjacentHTML('beforeend', html);
+    // apply color class after insertion
+    const sel = document.getElementById(`${b.id}-status`);
+    if (sel) sel.classList.add('status-' + status.replace(/\s+/g, '-'));
+  });
+}
+
+function formatStatus(s) {
+  return { 'not-started': 'Not started', 'in-progress': 'In progress', 'confirmed': 'Confirmed' }[s] || s;
+}
+
+function updateBooking(id) {
+  const statusEl = document.getElementById(`${id}-status`);
+  const notesEl = document.getElementById(`${id}-notes`);
+  const confEl = document.getElementById(`${id}-conf`);
+
+  if (!state[id]) state[id] = {};
+  state[id].status = statusEl ? statusEl.value : 'not-started';
+  state[id].notes = notesEl ? notesEl.value : '';
+  state[id].conf = confEl ? confEl.value : '';
+
+  saveState(state);
+
+  // update dot
+  const statusVal = state[id].status;
+  // find the dot in the same booking item
+  const item = statusEl ? statusEl.closest('.booking-item') : null;
+  if (item) {
+    const dot = item.querySelector('.status-dot');
+    if (dot) {
+      dot.className = 'status-dot ' + statusVal.replace(/\s+/g, '-');
+    }
+    const label = item.querySelector('.status-dot + *') || (dot && dot.nextSibling);
+    // update status label text
+    const statusContainer = item.querySelector('.booking-controls > div:nth-child(3) div');
+    if (statusContainer) {
+      statusContainer.innerHTML = `<span class="status-dot ${statusVal.replace(/\s+/g, '-')}"></span>${formatStatus(statusVal)}`;
+    }
+    // update select color
+    if (statusEl) {
+      statusEl.className = 'status-' + statusVal.replace(/\s+/g, '-');
+    }
+  }
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+
+renderBookings();
+loadTransport();
+updateCountdown();
+</script>
+
+</body>
+</html>
