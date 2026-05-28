@@ -26,7 +26,6 @@
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--bg);
       color: var(--cream);
@@ -49,32 +48,11 @@
       height: 2px;
       background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
     }
-    .eyebrow {
-      font-size: 0.65rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold-dim);
-      margin-bottom: 0.9rem;
-    }
-    .header-title {
-      font-size: clamp(1.9rem, 5vw, 3.2rem);
-      font-weight: normal;
-      color: var(--cream);
-      letter-spacing: 0.06em;
-      line-height: 1.15;
-    }
+    .eyebrow { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.9rem; }
+    .header-title { font-size: clamp(1.9rem, 5vw, 3.2rem); font-weight: normal; color: var(--cream); letter-spacing: 0.06em; line-height: 1.15; }
     .header-title em { color: var(--gold); font-style: normal; }
-    .divider {
-      width: 52px; height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
-      margin: 1rem auto;
-    }
-    .header-sub {
-      font-size: 0.82rem;
-      color: var(--cream-dim);
-      letter-spacing: 0.12em;
-      font-style: italic;
-    }
+    .divider { width: 52px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-dim), transparent); margin: 1rem auto; }
+    .header-sub { font-size: 0.82rem; color: var(--cream-dim); letter-spacing: 0.12em; font-style: italic; }
 
     /* ─── NAV ─── */
     nav {
@@ -88,325 +66,122 @@
       overflow-x: auto;
     }
     nav button {
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      color: var(--cream-dim);
-      font-family: inherit;
-      font-size: 0.68rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      padding: 1.1rem 1.6rem;
-      cursor: pointer;
-      transition: color 0.18s, border-color 0.18s;
-      white-space: nowrap;
-      flex-shrink: 0;
+      background: none; border: none; border-bottom: 2px solid transparent;
+      color: var(--cream-dim); font-family: inherit; font-size: 0.68rem;
+      letter-spacing: 0.22em; text-transform: uppercase; padding: 1.1rem 1.6rem;
+      cursor: pointer; transition: color 0.18s, border-color 0.18s;
+      white-space: nowrap; flex-shrink: 0;
     }
     nav button:hover { color: var(--cream); }
     nav button.active { color: var(--gold); border-bottom-color: var(--gold); }
 
     /* ─── MAIN ─── */
-    main {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 5rem;
-    }
+    main { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
     .section { display: none; }
     .section.active { display: block; animation: fadeIn 0.25s ease; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
-    .section-header {
-      text-align: center;
-      margin-bottom: 2.75rem;
-    }
-    .section-header h2 {
-      font-size: 1.35rem;
-      font-weight: normal;
-      color: var(--gold);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-    .section-header p {
-      margin-top: 0.45rem;
-      font-size: 0.82rem;
-      color: var(--cream-dim);
-      font-style: italic;
-    }
+    .section-header { text-align: center; margin-bottom: 2.75rem; }
+    .section-header h2 { font-size: 1.35rem; font-weight: normal; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; }
+    .section-header p { margin-top: 0.45rem; font-size: 0.82rem; color: var(--cream-dim); font-style: italic; }
 
-    /* ═══════════════════════════════════════
-       ITINERARY TIMELINE
-    ═══════════════════════════════════════ */
-    .timeline {
-      position: relative;
-      padding-left: 130px;
-    }
+    /* ═══════════ ITINERARY TIMELINE ═══════════ */
+    .timeline { position: relative; padding-left: 130px; }
     .timeline::before {
-      content: '';
-      position: absolute;
-      left: 129px;
-      top: 0; bottom: 0;
-      width: 1px;
+      content: ''; position: absolute; left: 129px; top: 0; bottom: 0; width: 1px;
       background: linear-gradient(180deg, transparent, var(--border-gold) 5%, var(--border-gold) 95%, transparent);
     }
-    .leg {
-      position: relative;
-      padding: 0 0 2.5rem 2rem;
-    }
+    .leg { position: relative; padding: 0 0 2.5rem 2rem; }
     .leg:last-child { padding-bottom: 0; }
-    .leg-dot {
-      position: absolute;
-      left: -7px; top: 0.35rem;
-      width: 13px; height: 13px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 2px solid var(--gold-dim);
-      z-index: 2;
-    }
-    .leg-dot.star {
-      border-color: var(--gold);
-      background: var(--gold);
-      box-shadow: 0 0 16px rgba(201,168,76,0.55);
-    }
-    .leg-label {
-      position: absolute;
-      right: 100%;
-      top: 0;
-      width: 112px;
-      padding-right: 1.75rem;
-      text-align: right;
-    }
+    .leg-dot { position: absolute; left: -7px; top: 0.35rem; width: 13px; height: 13px; border-radius: 50%; background: var(--bg); border: 2px solid var(--gold-dim); z-index: 2; }
+    .leg-dot.star { border-color: var(--gold); background: var(--gold); box-shadow: 0 0 16px rgba(201,168,76,0.55); }
+    .leg-label { position: absolute; right: 100%; top: 0; width: 112px; padding-right: 1.75rem; text-align: right; }
     .leg-dates { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.07em; line-height: 1.4; }
     .leg-nights { font-size: 0.62rem; color: var(--cream-dim); margin-top: 0.2rem; }
-
-    .leg-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      padding: 1.4rem 1.5rem;
-      transition: border-color 0.2s;
-    }
+    .leg-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 5px; padding: 1.4rem 1.5rem; transition: border-color 0.2s; }
     .leg-card:hover { border-color: var(--border-gold); }
-
-    .badge {
-      display: inline-block;
-      font-size: 0.6rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      background: var(--gold-faint);
-      border: 1px solid var(--border-gold);
-      padding: 0.18rem 0.55rem;
-      border-radius: 2px;
-      margin-bottom: 0.6rem;
-    }
+    .badge { display: inline-block; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); background: var(--gold-faint); border: 1px solid var(--border-gold); padding: 0.18rem 0.55rem; border-radius: 2px; margin-bottom: 0.6rem; }
     .leg-hotel { font-size: 1rem; color: var(--cream); letter-spacing: 0.03em; margin-bottom: 0.2rem; }
-    .leg-location {
-      font-size: 0.65rem;
-      color: var(--gold-dim);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 0.9rem;
-    }
+    .leg-location { font-size: 0.65rem; color: var(--gold-dim); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.9rem; }
     .leg-acts { list-style: none; margin-bottom: 0.9rem; }
-    .leg-acts li {
-      font-size: 0.79rem;
-      color: var(--cream-dim);
-      padding: 0.22rem 0 0.22rem 1.1rem;
-      position: relative;
-      line-height: 1.4;
-    }
+    .leg-acts li { font-size: 0.79rem; color: var(--cream-dim); padding: 0.22rem 0 0.22rem 1.1rem; position: relative; line-height: 1.4; }
     .leg-acts li::before { content: '—'; position: absolute; left: 0; color: var(--gold-dim); }
-    .leg-note {
-      font-size: 0.73rem;
-      color: var(--gold-dim);
-      font-style: italic;
-      border-left: 2px solid var(--gold-dim);
-      padding-left: 0.8rem;
-      line-height: 1.55;
-    }
+    .leg-note { font-size: 0.73rem; color: var(--gold-dim); font-style: italic; border-left: 2px solid var(--gold-dim); padding-left: 0.8rem; line-height: 1.55; }
 
-    /* ═══════════════════════════════════════
-       BOOKING TRACKER
-    ═══════════════════════════════════════ */
-    .progress-wrap {
-      background: var(--bg2);
-      border: 1px solid var(--border-gold);
-      border-radius: 5px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 1.75rem;
-    }
-    .progress-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 0.6rem;
-    }
+    /* ═══════════ BOOKINGS ═══════════ */
+    .progress-wrap { background: var(--bg2); border: 1px solid var(--border-gold); border-radius: 5px; padding: 1.25rem 1.5rem; margin-bottom: 1.75rem; }
+    .progress-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.6rem; }
     .progress-row span { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cream-dim); }
     .progress-row strong { font-size: 0.78rem; color: var(--gold); }
     .progress-track { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--gold-dim), var(--gold));
-      border-radius: 2px;
-      transition: width 0.4s ease;
-    }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dim), var(--gold)); border-radius: 2px; transition: width 0.4s ease; }
 
-    .booking-item {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 5px;
-      margin-bottom: 6px;
-      overflow: hidden;
-      transition: border-color 0.18s;
-    }
+    .booking-item { background: var(--bg2); border: 1px solid var(--border); border-radius: 5px; margin-bottom: 6px; overflow: hidden; transition: border-color 0.18s; }
     .booking-item:hover { border-color: var(--border-gold); }
     .booking-item.confirmed { border-color: rgba(106,158,114,0.25); }
-
-    .b-header {
-      display: flex;
-      align-items: center;
-      gap: 0.9rem;
-      padding: 1rem 1.25rem;
-      cursor: pointer;
-      user-select: none;
-    }
+    .b-header { display: flex; align-items: center; gap: 0.9rem; padding: 1rem 1.25rem; cursor: pointer; user-select: none; }
     .b-priority { font-size: 0.58rem; color: var(--gold-dim); letter-spacing: 0.12em; text-transform: uppercase; min-width: 60px; flex-shrink: 0; }
     .b-name { flex: 1; font-size: 0.88rem; color: var(--cream); }
-    .b-status {
-      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.22rem 0.55rem; border-radius: 2px; border: 1px solid;
-      white-space: nowrap; flex-shrink: 0;
-    }
-    .st-ns  { color: var(--cream-dim); border-color: #333; background: rgba(255,255,255,0.02); }
-    .st-ip  { color: var(--amber); border-color: rgba(196,154,58,0.3); background: rgba(196,154,58,0.08); }
-    .st-ok  { color: var(--green); border-color: rgba(106,158,114,0.3); background: rgba(106,158,114,0.08); }
+    .b-status { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.22rem 0.55rem; border-radius: 2px; border: 1px solid; white-space: nowrap; flex-shrink: 0; }
+    .st-ns { color: var(--cream-dim); border-color: #333; background: rgba(255,255,255,0.02); }
+    .st-ip { color: var(--amber); border-color: rgba(196,154,58,0.3); background: rgba(196,154,58,0.08); }
+    .st-ok { color: var(--green); border-color: rgba(106,158,114,0.3); background: rgba(106,158,114,0.08); }
     .b-chevron { color: var(--cream-dim); font-size: 0.65rem; transition: transform 0.18s; flex-shrink: 0; }
     .booking-item.open .b-chevron { transform: rotate(180deg); }
-
     .b-body { display: none; padding: 0 1.25rem 1.25rem; border-top: 1px solid var(--border); }
     .booking-item.open .b-body { display: block; }
-
-    .b-desc {
-      font-size: 0.76rem; color: var(--cream-dim); font-style: italic;
-      line-height: 1.6; padding-top: 0.85rem; margin-bottom: 1.1rem;
-    }
+    .b-desc { font-size: 0.76rem; color: var(--cream-dim); font-style: italic; line-height: 1.6; padding-top: 0.85rem; margin-bottom: 1.1rem; }
     .b-link-row { margin-bottom: 1rem; }
-    .b-link-row label {
-      display: block; font-size: 0.58rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.28rem;
-    }
-    .b-link-anchor {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      font-size: 0.78rem; color: var(--gold); text-decoration: none;
-      border-bottom: 1px solid rgba(201,168,76,0.3); padding-bottom: 1px;
-      transition: color 0.15s, border-color 0.15s; word-break: break-all;
-    }
+    .b-link-row label { display: block; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 0.28rem; }
+    .b-link-anchor { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.78rem; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.3); padding-bottom: 1px; transition: color 0.15s, border-color 0.15s; word-break: break-all; }
     .b-link-anchor:hover { color: var(--gold-light); border-bottom-color: var(--gold-light); }
     .b-link-anchor svg { flex-shrink: 0; }
-
     .status-btns { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.1rem; }
     .status-btns > span { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-right: 0.2rem; }
-    .sbtn {
-      background: none; border: 1px solid var(--border); color: var(--cream-dim);
-      font-family: inherit; font-size: 0.62rem; letter-spacing: 0.12em;
-      text-transform: uppercase; padding: 0.3rem 0.7rem; cursor: pointer;
-      border-radius: 2px; transition: all 0.15s;
-    }
+    .sbtn { background: none; border: 1px solid var(--border); color: var(--cream-dim); font-family: inherit; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.3rem 0.7rem; cursor: pointer; border-radius: 2px; transition: all 0.15s; }
     .sbtn:hover { border-color: var(--gold-dim); color: var(--gold); }
     .sbtn.on-ns { border-color: #555; color: var(--cream-dim); background: rgba(255,255,255,0.04); }
     .sbtn.on-ip { border-color: rgba(196,154,58,0.5); color: var(--amber); background: rgba(196,154,58,0.1); }
     .sbtn.on-ok { border-color: rgba(106,158,114,0.5); color: var(--green); background: rgba(106,158,114,0.1); }
-
     .b-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
     @media (max-width: 580px) { .b-fields { grid-template-columns: 1fr; } }
-
     .fgroup { display: flex; flex-direction: column; gap: 0.28rem; }
     .fgroup label { font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); }
-    .fgroup input, .fgroup textarea {
-      background: var(--bg3); border: 1px solid var(--border); color: var(--cream);
-      font-family: inherit; font-size: 0.8rem; padding: 0.5rem 0.7rem;
-      border-radius: 3px; outline: none; transition: border-color 0.18s;
-    }
+    .fgroup input, .fgroup textarea { background: var(--bg3); border: 1px solid var(--border); color: var(--cream); font-family: inherit; font-size: 0.8rem; padding: 0.5rem 0.7rem; border-radius: 3px; outline: none; transition: border-color 0.18s; }
     .fgroup input:focus, .fgroup textarea:focus { border-color: var(--gold-dim); }
     .fgroup textarea { resize: vertical; min-height: 62px; }
 
-    /* ═══════════════════════════════════════
-       TRANSPORT
-    ═══════════════════════════════════════ */
-    .transport-leg {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: 5px; margin-bottom: 6px; overflow: hidden; transition: border-color 0.18s;
-    }
+    /* ═══════════ TRANSPORT ═══════════ */
+    .transport-leg { background: var(--bg2); border: 1px solid var(--border); border-radius: 5px; margin-bottom: 6px; overflow: hidden; transition: border-color 0.18s; }
     .transport-leg:hover { border-color: var(--border-gold); }
     .transport-leg.tconfirmed { border-color: rgba(106,158,114,0.25); }
-
-    .t-header {
-      display: flex; align-items: center; gap: 0.9rem;
-      padding: 1rem 1.25rem; cursor: pointer; user-select: none;
-    }
-    .t-priority {
-      font-size: 0.58rem; color: var(--gold-dim); letter-spacing: 0.12em;
-      text-transform: uppercase; min-width: 60px; flex-shrink: 0;
-    }
+    .t-header { display: flex; align-items: center; gap: 0.9rem; padding: 1rem 1.25rem; cursor: pointer; user-select: none; }
+    .t-priority { font-size: 0.58rem; color: var(--gold-dim); letter-spacing: 0.12em; text-transform: uppercase; min-width: 60px; flex-shrink: 0; }
     .t-route-wrap { flex: 1; min-width: 0; }
     .t-route { font-size: 0.88rem; color: var(--cream); display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
     .t-arrow { color: var(--gold-dim); font-size: 0.75rem; flex-shrink: 0; }
     .t-meta { font-size: 0.68rem; color: var(--cream-dim); margin-top: 0.18rem; font-style: italic; }
-    .t-status {
-      font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.22rem 0.55rem; border-radius: 2px; border: 1px solid;
-      white-space: nowrap; flex-shrink: 0;
-    }
+    .t-status { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.22rem 0.55rem; border-radius: 2px; border: 1px solid; white-space: nowrap; flex-shrink: 0; }
     .t-chevron { color: var(--cream-dim); font-size: 0.65rem; transition: transform 0.18s; flex-shrink: 0; }
     .transport-leg.open .t-chevron { transform: rotate(180deg); }
-
     .t-body { display: none; padding: 0 1.25rem 1.25rem; border-top: 1px solid var(--border); }
     .transport-leg.open .t-body { display: block; }
-
     .t-desc { font-size: 0.76rem; color: var(--cream-dim); font-style: italic; line-height: 1.6; padding-top: 0.85rem; margin-bottom: 1.1rem; }
     .t-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem; }
     @media (max-width: 700px) { .t-fields { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 480px) { .t-fields { grid-template-columns: 1fr; } }
 
-    /* ═══════════════════════════════════════
-       COUNTDOWN
-    ═══════════════════════════════════════ */
-    .cd-hero {
-      text-align: center;
-      padding: 2.75rem 2rem;
-      background: var(--bg2);
-      border: 1px solid var(--border-gold);
-      border-radius: 5px;
-      margin-bottom: 1.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .cd-hero::before {
-      content: '';
-      position: absolute;
-      top: -60px; left: 50%; transform: translateX(-50%);
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .cd-number {
-      font-size: clamp(4rem, 12vw, 7rem);
-      color: var(--gold);
-      line-height: 1;
-      font-weight: normal;
-      text-shadow: 0 0 50px rgba(201,168,76,0.25);
-      position: relative;
-    }
+    /* ═══════════ COUNTDOWN ═══════════ */
+    .cd-hero { text-align: center; padding: 2.75rem 2rem; background: var(--bg2); border: 1px solid var(--border-gold); border-radius: 5px; margin-bottom: 1.5rem; position: relative; overflow: hidden; }
+    .cd-hero::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 300px; height: 300px; background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%); pointer-events: none; }
+    .cd-number { font-size: clamp(4rem, 12vw, 7rem); color: var(--gold); line-height: 1; font-weight: normal; text-shadow: 0 0 50px rgba(201,168,76,0.25); position: relative; }
     .cd-unit { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--cream-dim); margin-top: 0.5rem; }
     .cd-when { margin-top: 1.5rem; font-size: 0.8rem; color: var(--cream-dim); font-style: italic; }
-
     .cd-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 2.5rem; }
     .cd-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 5px; padding: 1.25rem 0.75rem; text-align: center; }
     .cd-card-num { font-size: 1.85rem; color: var(--cream); line-height: 1; }
     .cd-card-unit { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dim); margin-top: 0.35rem; }
-
     .gold-rule { border: none; height: 1px; background: linear-gradient(90deg, transparent, var(--border-gold), transparent); margin: 2rem 0; }
-
     .urgency-title { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold-dim); margin-bottom: 1.1rem; }
     .urgency-item { display: flex; align-items: flex-start; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
     .urgency-item:last-child { border-bottom: none; }
@@ -414,51 +189,26 @@
     .urgency-info { flex: 1; }
     .urgency-task { font-size: 0.83rem; color: var(--cream); margin-bottom: 0.25rem; }
     .urgency-sub { font-size: 0.71rem; color: var(--cream-dim); font-style: italic; line-height: 1.5; }
-    .urgency-pill {
-      font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0.22rem 0.55rem; border-radius: 2px; border: 1px solid;
-      white-space: nowrap; flex-shrink: 0; align-self: flex-start;
-    }
+    .urgency-pill { font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.22rem 0.55rem; border-radius: 2px; border: 1px solid; white-space: nowrap; flex-shrink: 0; align-self: flex-start; }
     .p-critical { color: #e07060; border-color: rgba(224,112,96,0.3); background: rgba(224,112,96,0.08); }
     .p-soon     { color: var(--amber); border-color: rgba(196,154,58,0.3); background: rgba(196,154,58,0.08); }
     .p-ok       { color: var(--green); border-color: rgba(106,158,114,0.3); background: rgba(106,158,114,0.08); }
 
-    /* ═══════════════════════════════════════
-       THE DAY TIMELINE
-    ═══════════════════════════════════════ */
+    /* ═══════════ THE DAY ═══════════ */
     .bday-lede { text-align: center; padding: 0 1rem 2rem; }
     .bday-lede h3 { font-size: 1.05rem; font-weight: normal; color: var(--gold); letter-spacing: 0.15em; }
     .bday-lede p { margin-top: 0.5rem; font-size: 0.82rem; color: var(--cream-dim); font-style: italic; }
-
     .day-timeline { position: relative; padding-left: 100px; }
-    .day-timeline::before {
-      content: ''; position: absolute; left: 99px; top: 0; bottom: 0; width: 1px;
-      background: linear-gradient(180deg, transparent, var(--border-gold) 3%, var(--border-gold) 97%, transparent);
-    }
+    .day-timeline::before { content: ''; position: absolute; left: 99px; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, transparent, var(--border-gold) 3%, var(--border-gold) 97%, transparent); }
     .day-item { position: relative; padding: 0 0 1.75rem 1.9rem; }
     .day-item:last-child { padding-bottom: 0; }
-    .day-dot {
-      position: absolute; left: -7px; top: 0.3rem;
-      width: 13px; height: 13px; border-radius: 50%;
-      background: var(--bg); border: 2px solid var(--gold-dim); z-index: 2;
-    }
-    .day-dot.key {
-      border-color: var(--gold); background: var(--gold);
-      box-shadow: 0 0 14px rgba(201,168,76,0.5);
-    }
-    .day-time {
-      position: absolute; right: 100%; top: 0; width: 88px;
-      padding-right: 1.75rem; text-align: right;
-      font-size: 0.68rem; color: var(--gold-dim); letter-spacing: 0.06em; line-height: 1.8;
-    }
+    .day-dot { position: absolute; left: -7px; top: 0.3rem; width: 13px; height: 13px; border-radius: 50%; background: var(--bg); border: 2px solid var(--gold-dim); z-index: 2; }
+    .day-dot.key { border-color: var(--gold); background: var(--gold); box-shadow: 0 0 14px rgba(201,168,76,0.5); }
+    .day-time { position: absolute; right: 100%; top: 0; width: 88px; padding-right: 1.75rem; text-align: right; font-size: 0.68rem; color: var(--gold-dim); letter-spacing: 0.06em; line-height: 1.8; }
     .day-title { font-size: 0.92rem; color: var(--cream); margin-bottom: 0.3rem; }
     .day-desc { font-size: 0.79rem; color: var(--cream-dim); line-height: 1.65; }
-    .day-note {
-      margin-top: 0.55rem; font-size: 0.72rem; color: var(--gold-dim); font-style: italic;
-      border-left: 2px solid var(--gold-dim); padding-left: 0.75rem; line-height: 1.5;
-    }
+    .day-note { margin-top: 0.55rem; font-size: 0.72rem; color: var(--gold-dim); font-style: italic; border-left: 2px solid var(--gold-dim); padding-left: 0.75rem; line-height: 1.5; }
 
-    /* ─── RESPONSIVE ─── */
     @media (max-width: 600px) {
       .timeline { padding-left: 100px; }
       .leg-label { width: 85px; padding-right: 1.25rem; }
@@ -474,7 +224,7 @@
   <div class="eyebrow">A Golden Milestone</div>
   <h1 class="header-title">Argentina <em>50th Birthday</em></h1>
   <div class="divider"></div>
-  <div class="header-sub">September 20 – October 3, 2026 &nbsp;·&nbsp; Buenos Aires &nbsp;·&nbsp; Mendoza &nbsp;·&nbsp; Córdoba</div>
+  <div class="header-sub">September 20 – October 3, 2026 &nbsp;·&nbsp; Buenos Aires &nbsp;·&nbsp; Córdoba Sierras &nbsp;·&nbsp; Mendoza</div>
 </header>
 
 <nav>
@@ -492,11 +242,12 @@
     <div class="section-header">
       <h2>The Journey</h2>
       <div class="divider"></div>
-      <p>September 20 – October 3, 2026 &nbsp;·&nbsp; 13 nights</p>
+      <p>September 20 – October 3, 2026 &nbsp;·&nbsp; 13 nights &nbsp;·&nbsp; four distinct worlds</p>
     </div>
 
     <div class="timeline">
 
+      <!-- Buenos Aires opening -->
       <div class="leg">
         <div class="leg-dot"></div>
         <div class="leg-label">
@@ -505,60 +256,65 @@
         </div>
         <div class="leg-card">
           <div class="leg-hotel">Algodon Mansion</div>
-          <div class="leg-location">Buenos Aires · Palermo</div>
+          <div class="leg-location">Buenos Aires · Recoleta</div>
           <ul class="leg-acts">
-            <li>Arrive, decompress, settle into the city's rhythm — no agenda</li>
-            <li>Recoleta neighborhood: ornate architecture, shaded streets, unhurried pace</li>
-            <li>Wine bars in Palermo — Argentine Malbec begins here</li>
-            <li>Late dinners in the city that doesn't eat before 9 pm</li>
-            <li>Slow mornings at the Mansion before the journey south</li>
+            <li>Arrive into the city and let it come to you — no sightseeing agenda</li>
+            <li>Recoleta cemetery walk in early morning before the city wakes</li>
+            <li>Palacio Duhau gardens: one of the finest private gardens in BA</li>
+            <li>Librería El Ateneo — the great bookshop inside a 1919 theatre</li>
+            <li>Café afternoons in Recoleta, wine bars in Palermo after dark</li>
+            <li>Late dinners: Buenos Aires eats at 9 pm — lean into it</li>
           </ul>
-          <div class="leg-note">The Mansion is boutique and intimate — the ideal cushion before the landscape opens up. Buenos Aires is a city for walking and eating late. Let it be exactly that.</div>
+          <div class="leg-note">Buenos Aires is slow urban immersion, not city tourism. The Mansion's Recoleta address puts you in exactly the right neighborhood for this pace: architecture, culture, excellent wine, unhurried afternoons.</div>
         </div>
       </div>
 
+      <!-- Estancia — birthday -->
+      <div class="leg">
+        <div class="leg-dot star"></div>
+        <div class="leg-label">
+          <div class="leg-dates">Sep 23–27</div>
+          <div class="leg-nights">4 nights</div>
+        </div>
+        <div class="leg-card">
+          <span class="badge">★ Birthday — Night 2 · September 25th</span>
+          <div class="leg-hotel">Estancia Los Potreros</div>
+          <div class="leg-location">Córdoba Sierras · Argentina</div>
+          <ul class="leg-acts">
+            <li>Fly Buenos Aires → Córdoba, private transfer to the estancia in the sierras</li>
+            <li>Hosted warmth: this is a family-run estancia with real Argentine countryside culture</li>
+            <li>Walks through the sierras, long lunches, pool and veranda time, fireplace evenings</li>
+            <li>Food and wine at the heart of every day — Argentine parrilla, local Malbec</li>
+            <li>Horseback riding available, entirely optional — texture rather than identity</li>
+            <li>September 25: the birthday itself — see The Day tab</li>
+          </ul>
+          <div class="leg-note">Los Potreros is intimate and human-scale — the emotional centre of the trip. Four nights here are right: enough to settle into the rhythm of the place and let the birthday evening feel earned.</div>
+        </div>
+      </div>
+
+      <!-- Casa de Uco — post-birthday -->
       <div class="leg">
         <div class="leg-dot"></div>
         <div class="leg-label">
-          <div class="leg-dates">Sep 23–25</div>
-          <div class="leg-nights">2 nights</div>
+          <div class="leg-dates">Sep 27–Oct 1</div>
+          <div class="leg-nights">4 nights</div>
         </div>
         <div class="leg-card">
           <div class="leg-hotel">Casa de Uco</div>
           <div class="leg-location">Mendoza · Uco Valley Vineyards</div>
           <ul class="leg-acts">
-            <li>Fly Buenos Aires → Mendoza (Aerolíneas, ~2 hrs) — Andes appear immediately on approach</li>
-            <li>Vineyard living: rows of vines to the horizon, mountain light at every hour</li>
-            <li>One winery tasting per day maximum — this is not a tour, it's a settling in</li>
-            <li>Long lunches with afternoon light falling across the table</li>
-            <li>Spa, silence, and the specific quality of dusk in the high desert</li>
+            <li>Fly Córdoba → Mendoza: Andes visible immediately on descent</li>
+            <li>Post-birthday restoration: spa, vineyard stillness, mountain light</li>
+            <li>One major experience per day maximum — a tasting menu, a blending session, a gourmet vineyard picnic or asado</li>
+            <li>The Relax Experience spa program: deeply aligned with the pacing of this moment in the trip</li>
+            <li>Cycling between vineyards at your own pace, sunset wine, long lunches that slide into the afternoon</li>
+            <li>The Andes close and clear every morning — this is the view you earn by slowing down</li>
           </ul>
-          <div class="leg-note">Two nights is lean but meaningful — enough to feel the altitude and the quiet before the birthday journey continues south to the sierras.</div>
+          <div class="leg-note">Mendoza as post-birthday afterglow is the strongest possible use of Casa de Uco. The spa, wine, and sensory richness here are designed precisely for this kind of restoration — not for checking things off, but for settling in.</div>
         </div>
       </div>
 
-      <div class="leg">
-        <div class="leg-dot star"></div>
-        <div class="leg-label">
-          <div class="leg-dates">Sep 25–Oct 1</div>
-          <div class="leg-nights">6 nights</div>
-        </div>
-        <div class="leg-card">
-          <span class="badge">★ Birthday Arrival — September 25th</span>
-          <div class="leg-hotel">Estancia Los Potreros</div>
-          <div class="leg-location">Córdoba Sierras · Argentina</div>
-          <ul class="leg-acts">
-            <li>Fly Mendoza → Córdoba (~1.5 hrs), private transfer to the estancia (~1.5 hrs)</li>
-            <li>Arrive on September 25th — the birthday itself — to a fireplace already lit</li>
-            <li>Lodge-based: intimate, unhurried, no resort agenda</li>
-            <li>Horseback riding across open land through the Córdoba sierras</li>
-            <li>Long scenic drives, fireplace evenings, the deep quiet of a working estancia</li>
-            <li>September 25: full birthday sequence — see The Day tab</li>
-          </ul>
-          <div class="leg-note">The Mendoza–Córdoba flight is short and morning-friendly. Arrive at the estancia by early afternoon — time to settle in, ride, and be ready for the birthday evening exactly as it should be.</div>
-        </div>
-      </div>
-
+      <!-- Buenos Aires return -->
       <div class="leg">
         <div class="leg-dot"></div>
         <div class="leg-label">
@@ -567,15 +323,15 @@
         </div>
         <div class="leg-card">
           <div class="leg-hotel">Buenos Aires — Return</div>
-          <div class="leg-location">Buenos Aires · Departure buffer</div>
+          <div class="leg-location">Buenos Aires · Final nights</div>
           <ul class="leg-acts">
-            <li>Transfer from estancia → Córdoba → Buenos Aires</li>
-            <li>One full day to decompress, eat well, let the trip settle</li>
-            <li>Long lunch at a favourite porteño restaurant</li>
-            <li>Last walk through the city — Palermo, Recoleta, the streets at dusk</li>
-            <li>International departure October 3rd</li>
+            <li>Fly Mendoza → Buenos Aires: familiar city now feels different after two weeks in the country</li>
+            <li>One full day with no obligations — let the trip exist before it ends</li>
+            <li>Long lunch at whichever restaurant the first three days missed</li>
+            <li>Final walk through Recoleta or Palermo at dusk</li>
+            <li>International departure October 3rd from EZE</li>
           </ul>
-          <div class="leg-note">Never connect same-day from a remote property to an international flight. This buffer is unhurried insurance — and Buenos Aires earns a second visit.</div>
+          <div class="leg-note">A graceful re-entry rather than an abrupt ending. The city buffer allows the trip to close on its own terms, without the compression of airport stress after something this carefully built.</div>
         </div>
       </div>
 
@@ -593,7 +349,7 @@
     <div class="progress-wrap">
       <div class="progress-row">
         <span>Booking Progress</span>
-        <strong id="prog-text">0 of 8 confirmed</strong>
+        <strong id="prog-text">0 of 9 confirmed</strong>
       </div>
       <div class="progress-track">
         <div class="progress-fill" id="prog-fill" style="width:0%"></div>
@@ -608,9 +364,8 @@
     <div class="section-header">
       <h2>Getting There</h2>
       <div class="divider"></div>
-      <p>Every flight leg — Dakar and Hamburg to Argentina and back</p>
+      <p>Every leg — Dakar and Hamburg to Argentina and back</p>
     </div>
-
     <div id="transport-list"></div>
   </section>
 
@@ -621,28 +376,16 @@
       <div class="divider"></div>
       <p>Time until the golden day</p>
     </div>
-
     <div class="cd-hero">
       <div class="cd-number" id="cd-days">—</div>
       <div class="cd-unit">Days Until September 25th</div>
       <div class="cd-when">Thursday, 25 September 2026 &nbsp;·&nbsp; Estancia Los Potreros &nbsp;·&nbsp; Córdoba Sierras</div>
     </div>
-
     <div class="cd-grid">
-      <div class="cd-card">
-        <div class="cd-card-num" id="cd-weeks">—</div>
-        <div class="cd-card-unit">Weeks</div>
-      </div>
-      <div class="cd-card">
-        <div class="cd-card-num" id="cd-months">—</div>
-        <div class="cd-card-unit">Months</div>
-      </div>
-      <div class="cd-card">
-        <div class="cd-card-num" id="cd-hours">—</div>
-        <div class="cd-card-unit">Hours</div>
-      </div>
+      <div class="cd-card"><div class="cd-card-num" id="cd-weeks">—</div><div class="cd-card-unit">Weeks</div></div>
+      <div class="cd-card"><div class="cd-card-num" id="cd-months">—</div><div class="cd-card-unit">Months</div></div>
+      <div class="cd-card"><div class="cd-card-num" id="cd-hours">—</div><div class="cd-card-unit">Hours</div></div>
     </div>
-
     <hr class="gold-rule">
     <div class="urgency-title">Booking Urgency Timeline</div>
     <div id="urgency-list"></div>
@@ -657,8 +400,8 @@
     </div>
 
     <div class="bday-lede">
-      <h3>The Arrival and the Evening</h3>
-      <p>A short morning flight, then the sierras open up. By afternoon the estancia is yours.</p>
+      <h3>Night 2 at the Estancia</h3>
+      <p>Already settled. Already at home. The day begins without needing to go anywhere.</p>
     </div>
 
     <div class="day-timeline">
@@ -666,53 +409,53 @@
       <div class="day-item">
         <div class="day-dot"></div>
         <div class="day-time">Morning</div>
-        <div class="day-title">Last Morning at Casa de Uco</div>
-        <div class="day-desc">Wake slowly in the vineyard. A light breakfast before the journey. The Andes on the horizon, the vines still. No hurry — the flight is short and the estancia will wait.</div>
+        <div class="day-title">Slow Breakfast at the Estancia</div>
+        <div class="day-desc">No alarm. The sierras outside the window, the air cooler than you expect. Breakfast at the estancia table — eggs, bread, fruit, strong coffee. No itinerary. No clock. This is how the day begins.</div>
       </div>
 
       <div class="day-item">
         <div class="day-dot"></div>
         <div class="day-time">Late morning</div>
-        <div class="day-title">Mendoza → Córdoba</div>
-        <div class="day-desc">A short domestic flight — less than ninety minutes. The landscape shifts beneath you: vineyard and altitude giving way to the rolling sierras of Córdoba. The private transfer begins at the airport.</div>
+        <div class="day-title">Optional: Walk, Ride, or Waterfall</div>
+        <div class="day-desc">If the morning calls for it: a guided walk into the sierras, a slow horseback ride across the property, or the short excursion to a local waterfall through native landscape. If it doesn't — stay. Read. Sit on the veranda. The estancia is equally perfect in stillness.</div>
+        <div class="day-note">Nothing on this day should feel like an obligation. The staff will offer; say yes or no with equal ease. The property is as beautiful when you do nothing in it.</div>
       </div>
 
       <div class="day-item">
         <div class="day-dot key"></div>
-        <div class="day-time">Early afternoon</div>
-        <div class="day-title">Arrival at Estancia Los Potreros</div>
-        <div class="day-desc">The transfer winds into the hills — and then the estancia appears. A fireplace. An open sky. The deep quiet of a place far from everything. This is where the birthday begins in earnest. Fifty, and you have arrived somewhere extraordinary.</div>
-        <div class="day-note">Coordinate with the property: arrival time, in-room welcome, and the evening's arrangements confirmed well in advance. The estancia team are exceptional at making moments like this feel effortless.</div>
+        <div class="day-time">Midday</div>
+        <div class="day-title">Long Countryside Lunch</div>
+        <div class="day-desc">The centrepiece of the Argentine day. A proper lunch at the estancia — parrilla if available, always good wine, conversation, and no particular reason to leave the table. This is what the gaucho tradition of hospitality actually feels like when it's right.</div>
       </div>
 
       <div class="day-item">
         <div class="day-dot"></div>
         <div class="day-time">Afternoon</div>
-        <div class="day-title">Settle In — Horseback or Rest</div>
-        <div class="day-desc">If the light and energy allow: a short horseback ride out across the property before the afternoon gets long. Or simply: unpack slowly, a hot bath, lie down in a room full of good air. Either is exactly right.</div>
+        <div class="day-title">Pool, Reading, Bath, Rest</div>
+        <div class="day-desc">The full Argentine afternoon. The pool in the sierra sun, a book that has been waiting, a long bath drawn slowly, rest that is genuinely restful. This is not filler — it is the architecture of the evening. The better the afternoon, the better what follows.</div>
       </div>
 
       <div class="day-item">
         <div class="day-dot key"></div>
         <div class="day-time">Sunset</div>
-        <div class="day-title">Champagne with Andean Views</div>
-        <div class="day-desc">The sierras going golden, then rose, then dark. A glass of champagne already poured. The Andean light at its most dramatic. You are fifty years old, exactly here, on September 25th. Take it in without rushing — the evening is long.</div>
-        <div class="day-note">Pre-arrange with the estancia: champagne on ice at the viewing point or terrace. No elaborate setup needed — the landscape does all the work.</div>
+        <div class="day-title">Gin &amp; Tonic Overlooking the Sierras</div>
+        <div class="day-desc">The Córdoba sierras at dusk are not subtle. The light goes gold, then amber, then a particular rose that you will not find at lower altitude. A gin and tonic — or champagne — already poured. The two of you, exactly here, on September 25th. Nothing needs to be said. The landscape says it.</div>
+        <div class="day-note">Pre-arrange with the estancia: drinks set up at the viewpoint or terrace before sunset. A simple thing, perfectly placed.</div>
       </div>
 
       <div class="day-item">
         <div class="day-dot key"></div>
         <div class="day-time">Evening</div>
-        <div class="day-title">Private Dinner by Fireplace</div>
-        <div class="day-desc">Candlelit. Intimate, not performative. The fireplace lit, the sierra darkness outside the windows. An exceptional Malbec — the kind that only Argentina produces at altitude. A dinner that knows what it's celebrating without needing to announce it. Just the two of you, the fire, and fifty years arriving at exactly this moment.</div>
-        <div class="day-note">Confirm with the estancia team: private dinner setting, chosen wine, birthday dessert if desired. State the preference clearly — intimate and understated, not performative. They will understand.</div>
+        <div class="day-title">Intimate Candlelit Dinner — Estancia Table</div>
+        <div class="day-desc">The fireplace. Candles. The particular warmth of a room that is being used for something it was built for. An exceptional Malbec from a Mendoza they will know well. Estancia-style cuisine — the food of a place that takes its ingredients seriously. The dinner is intimate and not performative. No announcement. No ceremony beyond what the evening itself provides.</div>
+        <div class="day-note">Arrange with the estancia team well in advance: private dinner setting, wine selection from Mendoza producers, a birthday dessert if desired — kept understated. The staff here understand what this kind of evening requires.</div>
       </div>
 
       <div class="day-item">
         <div class="day-dot"></div>
-        <div class="day-time">Later</div>
-        <div class="day-title">The Fireplace. The Rest of the Night.</div>
-        <div class="day-desc">The sierras are completely dark and utterly silent. The fire burns low. Five more nights remain at the estancia — and that is exactly enough time to let this one fully settle in.</div>
+        <div class="day-time">Late</div>
+        <div class="day-title">Fireplace. Conversation. The Rest of the Night.</div>
+        <div class="day-desc">The sierras are completely dark. The fire burns low. You have two more nights here — and then Mendoza, and then the city, and then home. Tonight is unhurried. Fifty arrived, and it arrived well.</div>
       </div>
 
     </div>
@@ -721,7 +464,7 @@
 </main>
 
 <script>
-// ─── Navigation ───────────────────────────────────────────────────────────
+// ─── Navigation ──────────────────────────────────────────────────────────────
 function show(id, btn) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
@@ -731,37 +474,37 @@ function show(id, btn) {
   if (id === 'transport') renderTransport();
 }
 
-// ─── Booking data ─────────────────────────────────────────────────────────
+// ─── Booking data ─────────────────────────────────────────────────────────────
 const BOOKINGS = [
   {
     id: 'algodon',
     priority: '01', label: 'First',
     name: 'Algodon Mansion — Buenos Aires',
-    desc: 'Sep 20–23 (3 nights). A boutique mansion in Palermo — the perfect arrival into Buenos Aires. Call or email reservations directly. Small property with limited rooms; confirm early to request a quiet room and a preferred floor.',
+    desc: 'Sep 20–23 (3 nights). A boutique mansion in Recoleta — the ideal arrival into Buenos Aires. Small property; confirm early and request a quiet room. The Recoleta location is perfect for the slow urban immersion pace of this leg.',
     link: 'https://www.algodonhotels.com/mansion/?_ga=2.234608094.1715693104.1779958277-1579200774.1779958276',
     linkLabel: 'Algodon Mansion',
   },
   {
-    id: 'casadeuco',
-    priority: '02', label: 'Urgent',
-    name: 'Casa de Uco — Mendoza',
-    desc: 'Sep 23–25 (2 nights). A vineyard lodge in the Uco Valley with Andean views. Small property, high demand in September shoulder season. Book via Mr & Mrs Smith or contact the property directly. Request a room facing the mountains.',
-    link: 'https://www.mrandmrssmith.com/luxury-hotels/casa-de-uco?s%5Btags%5D=destination.destination%3Asouth-america.argentina%3Bdestination.destination%3Asouth-america.argentina.mendoza',
-    linkLabel: 'Casa de Uco — Mr & Mrs Smith',
-  },
-  {
     id: 'lospotreros',
-    priority: '03', label: 'Urgent',
-    name: 'Estancia Los Potreros',
-    desc: 'Sep 25 – Oct 1 (6 nights). The heart of the trip — a working estancia in the Córdoba sierras, intimate and lodge-based. Very limited capacity. Contact the property directly. Mention the 50th birthday and the private dinner for September 25th at the time of booking.',
+    priority: '02', label: 'Urgent',
+    name: 'Estancia Los Potreros — Córdoba Sierras',
+    desc: 'Sep 23–27 (4 nights). The emotional heart of the trip — and the birthday location. Very limited capacity, family-run, directly booked. Mention September 25th at the time of enquiry. Coordinate the private transfer from Córdoba airport and the birthday dinner arrangements when confirming.',
     link: 'https://www.estancialospotreros.com/',
     linkLabel: 'Estancia Los Potreros',
+  },
+  {
+    id: 'casadeuco',
+    priority: '03', label: 'Urgent',
+    name: 'Casa de Uco — Mendoza',
+    desc: 'Sep 27–Oct 1 (4 nights). Post-birthday restoration in the Uco Valley. Book via Mr & Mrs Smith or contact the property directly. Request a mountain-facing room. September is peak shoulder season — move quickly.',
+    link: 'https://www.mrandmrssmith.com/luxury-hotels/casa-de-uco?s%5Btags%5D=destination.destination%3Asouth-america.argentina%3Bdestination.destination%3Asouth-america.argentina.mendoza',
+    linkLabel: 'Casa de Uco — Mr & Mrs Smith',
   },
   {
     id: 'flights-dkr',
     priority: '04', label: 'High',
     name: 'Flights — Dakar to Buenos Aires',
-    desc: 'Return flights from Dakar (DSS) to Buenos Aires EZE. No direct routing exists — expect one stopover, most likely São Paulo GRU or Paris CDG. Lock these once hotel dates are confirmed. Aim to arrive Buenos Aires Sep 20.',
+    desc: 'Return flights, Dakar DSS → Buenos Aires EZE. Best options via São Paulo GRU (TAP/LATAM) or Paris CDG (Air France). Aim to land Buenos Aires the morning of Sep 20. Book once estancia dates are confirmed — they anchor everything.',
     link: 'https://www.google.com/flights',
     linkLabel: 'Search Google Flights',
   },
@@ -769,92 +512,105 @@ const BOOKINGS = [
     id: 'flights-ham',
     priority: '05', label: 'High',
     name: 'Partner Flights — Hamburg to Buenos Aires',
-    desc: 'Highest logistical priority — both travelers must coordinate arrivals at EZE to travel onward together. Lufthansa via Frankfurt or Iberia via Madrid, ~14–16 hrs. Book simultaneously with the Dakar flight. Coordinate arrival times carefully.',
+    desc: 'The logistical lynchpin. Lufthansa via Frankfurt (~14 hrs) or Iberia via Madrid (~15 hrs). Both travelers must arrive EZE on the same date to travel onward together. Book simultaneously with Dakar flights and align arrival windows carefully.',
     link: 'https://www.google.com/flights',
     linkLabel: 'Search Google Flights',
   },
   {
-    id: 'domestic-mdz',
+    id: 'domestic-cor',
     priority: '06', label: 'High',
-    name: 'Buenos Aires → Mendoza — Aerolíneas Argentinas',
-    desc: 'Sep 23, Buenos Aires EZE to Mendoza MDZ, ~2 hrs. Book on Aerolíneas Argentinas directly. Morning flight preferred to allow full afternoon at Casa de Uco. Can sell out on weekend dates.',
+    name: 'Buenos Aires → Córdoba — Domestic',
+    desc: 'Sep 23, EZE/AEP to Córdoba COR, Aerolíneas Argentinas, ~1.5 hrs. Morning departure preferred — allows full afternoon at the estancia after the private transfer (~1.5 hrs). Coordinate exact departure time with the estancia so transfer is pre-arranged.',
     link: 'https://www.aerolineas.com.ar',
     linkLabel: 'Aerolíneas Argentinas',
   },
   {
-    id: 'domestic-cor',
+    id: 'domestic-mdz',
     priority: '07', label: 'Medium',
-    name: 'Mendoza → Córdoba — Domestic',
-    desc: 'Sep 25, Mendoza MDZ to Córdoba COR, ~1.5 hrs on Aerolíneas Argentinas. Morning departure essential — allows arrival at the estancia by early afternoon for the birthday. Check for 8–10 am departure windows.',
+    name: 'Córdoba → Mendoza — Domestic',
+    desc: 'Sep 27, Córdoba COR to Mendoza MDZ, Aerolíneas Argentinas, ~1.5 hrs. Morning or midday flight — arrives in time for afternoon at Casa de Uco. Book the private transfer from Mendoza airport to the vineyard at the same time.',
+    link: 'https://www.aerolineas.com.ar',
+    linkLabel: 'Aerolíneas Argentinas',
+  },
+  {
+    id: 'domestic-ba',
+    priority: '08', label: 'Medium',
+    name: 'Mendoza → Buenos Aires — Domestic',
+    desc: 'Oct 1, Mendoza MDZ to Buenos Aires EZE or AEP, Aerolíneas Argentinas, ~2 hrs. Afternoon departure is fine — arrives in Buenos Aires for final two nights. No rush on this leg.',
     link: 'https://www.aerolineas.com.ar',
     linkLabel: 'Aerolíneas Argentinas',
   },
   {
     id: 'bday-dinner',
-    priority: '08', label: 'Medium',
+    priority: '09', label: 'Medium',
     name: 'Birthday Dinner — Estancia Los Potreros',
-    desc: 'Coordinate the birthday evening directly with the estancia team: private candlelit dinner by the fireplace, exceptional Malbec, intimate setup. Contact the property once accommodation is confirmed. Confirm 2 weeks before arrival.',
+    desc: 'Coordinate with the estancia team: private candlelit dinner by the fireplace, Mendoza Malbec selection, intimate setup for September 25th. Discuss at time of booking; confirm the specifics 2 weeks before arrival. State clearly: intimate and unhurried, not performative.',
     link: 'https://www.estancialospotreros.com/',
     linkLabel: 'Contact Estancia Los Potreros',
   },
 ];
 
-// ─── Transport data ───────────────────────────────────────────────────────
+// ─── Transport data ──────────────────────────────────────────────────────────
 const TRANSPORT = [
   {
     id: 'dkr-eze',
-    priority: 'Urgent', from: 'Dakar (DSS)', to: 'Buenos Aires (EZE)',
+    priority: 'Urgent',
+    from: 'Dakar (DSS)', to: 'Buenos Aires (EZE)',
     date: 'Sep 19–20, 2026', duration: '~16–18 hrs total', type: 'International',
-    desc: 'No direct routing from Dakar to Buenos Aires. Best options: via São Paulo GRU (TAP or LATAM) or via Paris CDG (Air France). Allow sufficient layover time — minimum 2 hrs. Aim to land Buenos Aires the morning of Sep 20 for full recovery day before the trip begins.',
+    desc: 'No direct routing Dakar–Buenos Aires. Best options: via São Paulo GRU (TAP or LATAM connecting) or via Paris CDG (Air France). Aim to land EZE the morning of Sep 20 for a full recovery day before the trip begins.',
     link: 'https://www.google.com/flights', linkLabel: 'Search Google Flights',
   },
   {
     id: 'ham-eze',
-    priority: 'Highest', from: 'Hamburg (HAM)', to: 'Buenos Aires (EZE)',
+    priority: 'Highest',
+    from: 'Hamburg (HAM)', to: 'Buenos Aires (EZE)',
     date: 'Sep 19–20, 2026', duration: '~14–16 hrs total', type: 'International',
-    desc: 'Partner flight — the logistical lynchpin of the entire trip. Lufthansa via Frankfurt FRA (~14 hrs) or Iberia via Madrid MAD (~15 hrs). Both travelers must coordinate arrivals at EZE to journey onward together. Book simultaneously with the Dakar flight and align arrival windows.',
+    desc: 'Partner flight — the logistical lynchpin of the entire journey. Lufthansa via Frankfurt FRA or Iberia via Madrid MAD. Both travelers must coordinate arrivals at EZE to travel onward together. Book simultaneously with the Dakar flight and align arrival windows exactly.',
     link: 'https://www.google.com/flights', linkLabel: 'Search Google Flights',
   },
   {
-    id: 'eze-mdz',
-    priority: 'High', from: 'Buenos Aires (EZE)', to: 'Mendoza (MDZ)',
-    date: 'Sep 23, 2026', duration: '~2 hrs', type: 'Domestic',
-    desc: 'Aerolíneas Argentinas domestic flight. Morning departure recommended — leaves the full afternoon for the vineyard. EZE to MDZ runs frequently. Check for flights departing 8–10 am from the domestic terminal at Aeroparque (AEP) — confirm which terminal applies.',
+    id: 'eze-cor',
+    priority: 'High',
+    from: 'Buenos Aires (EZE/AEP)', to: 'Córdoba (COR)',
+    date: 'Sep 23, 2026', duration: '~1.5 hrs', type: 'Domestic',
+    desc: 'Aerolíneas Argentinas from Buenos Aires to Córdoba. Morning departure preferred — the private transfer to Los Potreros takes approximately 1.5 hours from Córdoba airport. Coordinate the transfer with the estancia at the time of booking so they can meet the flight.',
     link: 'https://www.aerolineas.com.ar', linkLabel: 'Aerolíneas Argentinas',
   },
   {
-    id: 'mdz-cor',
-    priority: 'Medium', from: 'Mendoza (MDZ)', to: 'Córdoba (COR)',
-    date: 'Sep 25, 2026', duration: '~1.5 hrs + ~1.5 hr transfer', type: 'Domestic + Transfer',
-    desc: 'Critical timing: morning flight essential. Aerolíneas Argentinas MDZ–COR, followed by a private transfer from Córdoba airport to Estancia Los Potreros (~1.5 hrs into the sierras). Coordinate the private transfer with the estancia at the time of booking — they typically arrange this. Aim to arrive at the estancia no later than 2–3 pm.',
+    id: 'cor-mdz',
+    priority: 'Medium',
+    from: 'Córdoba (COR)', to: 'Mendoza (MDZ)',
+    date: 'Sep 27, 2026', duration: '~1.5 hrs', type: 'Domestic',
+    desc: 'Aerolíneas Argentinas from Córdoba to Mendoza. Morning or midday departure works well — arrival in Mendoza in time for late afternoon at Casa de Uco. Arrange the Casa de Uco transfer from MDZ airport at time of property booking.',
     link: 'https://www.aerolineas.com.ar', linkLabel: 'Aerolíneas Argentinas',
   },
   {
-    id: 'cor-eze',
-    priority: 'Medium', from: 'Estancia → Córdoba (COR)', to: 'Buenos Aires (EZE)',
-    date: 'Oct 1, 2026', duration: '~1.5 hr transfer + ~1.5 hr flight', type: 'Transfer + Domestic',
-    desc: 'Reverse routing: private transfer from the estancia to Córdoba airport, then Aerolíneas Argentinas COR–EZE or AEP. Allow generous time for the transfer — the estancia is remote and road conditions vary. Afternoon arrival in Buenos Aires for the final two nights.',
+    id: 'mdz-eze',
+    priority: 'Medium',
+    from: 'Mendoza (MDZ)', to: 'Buenos Aires (EZE)',
+    date: 'Oct 1, 2026', duration: '~2 hrs', type: 'Domestic',
+    desc: 'Aerolíneas Argentinas from Mendoza to Buenos Aires. Afternoon departure is comfortable — no morning rush needed on this leg. Arrives Buenos Aires for two final nights before international departure.',
     link: 'https://www.aerolineas.com.ar', linkLabel: 'Aerolíneas Argentinas',
   },
   {
     id: 'eze-dkr',
-    priority: 'Medium', from: 'Buenos Aires (EZE)', to: 'Dakar (DSS)',
+    priority: 'Medium',
+    from: 'Buenos Aires (EZE)', to: 'Dakar (DSS)',
     date: 'Oct 3, 2026', duration: '~16–18 hrs total', type: 'International',
-    desc: 'Return routing mirrors the outbound — via São Paulo GRU or Paris CDG. Book the return simultaneously with the outbound to lock in routing. Departs Oct 3 from EZE. Allow plenty of time to reach the international terminal from the Buenos Aires hotel.',
+    desc: 'Return routing mirrors the outbound — via São Paulo GRU or Paris CDG. Book the return simultaneously with the outbound to lock in routing and pricing. Departs EZE Oct 3; allow generous time to reach the international terminal.',
     link: 'https://www.google.com/flights', linkLabel: 'Search Google Flights',
   },
 ];
 
-// ─── Storage ──────────────────────────────────────────────────────────────
-const STORE_KEY   = 'arg50_bookings_v1';
-const T_STORE_KEY = 'arg50_transport_v1';
+// ─── Storage ─────────────────────────────────────────────────────────────────
+const STORE_KEY   = 'arg50_bookings_v2';
+const T_STORE_KEY = 'arg50_transport_v2';
 
-function loadState()  { try { return JSON.parse(localStorage.getItem(STORE_KEY)   || '{}'); } catch { return {}; } }
-function saveState(s) { localStorage.setItem(STORE_KEY, JSON.stringify(s)); }
+function loadState()   { try { return JSON.parse(localStorage.getItem(STORE_KEY)   || '{}'); } catch { return {}; } }
+function saveState(s)  { localStorage.setItem(STORE_KEY, JSON.stringify(s)); }
 function loadTState()  { try { return JSON.parse(localStorage.getItem(T_STORE_KEY) || '{}'); } catch { return {}; } }
 function saveTState(s) { localStorage.setItem(T_STORE_KEY, JSON.stringify(s)); }
 
-// ─── Status meta ──────────────────────────────────────────────────────────
 const STATUS_META = {
   'ns': { label: 'Not Started', cls: 'st-ns' },
   'ip': { label: 'In Progress', cls: 'st-ip' },
@@ -862,26 +618,23 @@ const STATUS_META = {
 };
 
 function esc(s) {
-  return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// ─── Render bookings ──────────────────────────────────────────────────────
+// ─── Bookings ─────────────────────────────────────────────────────────────────
 function renderBookings() {
   const state = loadState();
   const list  = document.getElementById('booking-list');
   const openItems = new Set([...document.querySelectorAll('.booking-item.open')].map(el => el.dataset.id));
-
-  let confirmed = 0;
-  let html = '';
+  let confirmed = 0, html = '';
 
   BOOKINGS.forEach(b => {
     const s = state[b.id] || { status: 'ns', notes: '', conf: '' };
     if (s.status === 'ok') confirmed++;
     const m = STATUS_META[s.status] || STATUS_META['ns'];
     const isOpen = openItems.has(b.id);
-
     html += `
-      <div class="booking-item${s.status === 'ok' ? ' confirmed' : ''}${isOpen ? ' open' : ''}" data-id="${b.id}">
+      <div class="booking-item${s.status==='ok'?' confirmed':''}${isOpen?' open':''}" data-id="${b.id}">
         <div class="b-header" onclick="toggleB('${b.id}')">
           <div class="b-priority">${b.priority} · ${b.label}</div>
           <div class="b-name">${b.name}</div>
@@ -893,10 +646,7 @@ function renderBookings() {
           <div class="b-link-row">
             <label>Booking Link</label>
             <a class="b-link-anchor" href="${b.link}" target="_blank" rel="noopener">
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                <path d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                <path d="M8 1h3v3M11 1 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M8 1h3v3M11 1 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               ${b.linkLabel}
             </a>
           </div>
@@ -909,14 +659,11 @@ function renderBookings() {
           <div class="b-fields">
             <div class="fgroup">
               <label>Confirmation Number</label>
-              <input type="text" placeholder="e.g. ARG-20260920-001"
-                value="${esc(s.conf)}"
-                oninput="saveField('${b.id}','conf',this.value)" />
+              <input type="text" placeholder="e.g. ARG-20260923-001" value="${esc(s.conf)}" oninput="saveField('${b.id}','conf',this.value)" />
             </div>
             <div class="fgroup">
               <label>Notes</label>
-              <textarea placeholder="Contact info, key dates, special requests…"
-                oninput="saveField('${b.id}','notes',this.value)">${esc(s.notes)}</textarea>
+              <textarea placeholder="Contact info, key dates, special requests…" oninput="saveField('${b.id}','notes',this.value)">${esc(s.notes)}</textarea>
             </div>
           </div>
         </div>
@@ -957,44 +704,31 @@ function saveField(id, field, value) {
   state[id][field] = value;
   saveState(state);
   let confirmed = 0;
-  BOOKINGS.forEach(b => { if ((state[b.id] || {}).status === 'ok') confirmed++; });
+  BOOKINGS.forEach(b => { if ((state[b.id]||{}).status === 'ok') confirmed++; });
   updateProgress(confirmed);
 }
 
-// ─── Render transport ─────────────────────────────────────────────────────
-const PRIORITY_COLOR = {
-  'Highest': 'var(--red)',
-  'Urgent':  '#e07060',
-  'High':    'var(--gold)',
-  'Medium':  'var(--cream-dim)',
-  'Domestic + Transfer': 'var(--cream-dim)',
-  'Transfer + Domestic': 'var(--cream-dim)',
-};
+// ─── Transport ────────────────────────────────────────────────────────────────
+const T_TYPE_COLOR = { 'International': 'var(--gold)', 'Domestic': 'var(--cream-dim)', 'Domestic + Transfer': 'var(--amber)' };
 
 function renderTransport() {
   const state = loadTState();
   const list  = document.getElementById('transport-list');
   if (!list) return;
-
   const openItems = new Set([...document.querySelectorAll('.transport-leg.open')].map(el => el.dataset.id));
-
   let html = '';
+
   TRANSPORT.forEach(t => {
     const s = state[t.id] || { status: 'ns', conf: '', airline: '', notes: '' };
     const m = STATUS_META[s.status] || STATUS_META['ns'];
     const isOpen = openItems.has(t.id);
-    const typeColor = PRIORITY_COLOR[t.type] || 'var(--cream-dim)';
-
+    const typeColor = T_TYPE_COLOR[t.type] || 'var(--cream-dim)';
     html += `
-      <div class="transport-leg${s.status === 'ok' ? ' tconfirmed' : ''}${isOpen ? ' open' : ''}" data-id="${t.id}">
+      <div class="transport-leg${s.status==='ok'?' tconfirmed':''}${isOpen?' open':''}" data-id="${t.id}">
         <div class="t-header" onclick="toggleT('${t.id}')">
           <div class="t-priority">${t.priority}</div>
           <div class="t-route-wrap">
-            <div class="t-route">
-              <span>${t.from}</span>
-              <span class="t-arrow">→</span>
-              <span>${t.to}</span>
-            </div>
+            <div class="t-route"><span>${t.from}</span><span class="t-arrow">→</span><span>${t.to}</span></div>
             <div class="t-meta">${t.date} &nbsp;·&nbsp; ${t.duration} &nbsp;·&nbsp; <span style="color:${typeColor}">${t.type}</span></div>
           </div>
           <div class="t-status ${m.cls}">${m.label}</div>
@@ -1005,10 +739,7 @@ function renderTransport() {
           <div class="b-link-row">
             <label>Booking Link</label>
             <a class="b-link-anchor" href="${t.link}" target="_blank" rel="noopener">
-              <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
-                <path d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-                <path d="M8 1h3v3M11 1 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
+              <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M8 1h3v3M11 1 6.5 5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               ${t.linkLabel}
             </a>
           </div>
@@ -1021,21 +752,15 @@ function renderTransport() {
           <div class="t-fields">
             <div class="fgroup">
               <label>Confirmation / PNR</label>
-              <input type="text" placeholder="e.g. LA-XJ72KP"
-                value="${esc(s.conf)}"
-                oninput="saveTField('${t.id}','conf',this.value)" />
+              <input type="text" placeholder="e.g. AR-XJ72KP" value="${esc(s.conf)}" oninput="saveTField('${t.id}','conf',this.value)" />
             </div>
             <div class="fgroup">
               <label>Airline / Carrier</label>
-              <input type="text" placeholder="e.g. Aerolíneas Argentinas AR1234"
-                value="${esc(s.airline||'')}"
-                oninput="saveTField('${t.id}','airline',this.value)" />
+              <input type="text" placeholder="e.g. Aerolíneas Argentinas AR1234" value="${esc(s.airline||'')}" oninput="saveTField('${t.id}','airline',this.value)" />
             </div>
             <div class="fgroup">
               <label>Notes</label>
-              <input type="text" placeholder="Departure time, terminal, seat…"
-                value="${esc(s.notes)}"
-                oninput="saveTField('${t.id}','notes',this.value)" />
+              <input type="text" placeholder="Departure time, terminal, seat…" value="${esc(s.notes)}" oninput="saveTField('${t.id}','notes',this.value)" />
             </div>
           </div>
         </div>
@@ -1070,7 +795,7 @@ function saveTField(id, field, value) {
   saveTState(state);
 }
 
-// ─── Countdown ────────────────────────────────────────────────────────────
+// ─── Countdown ────────────────────────────────────────────────────────────────
 function renderCountdown() {
   const now  = new Date();
   const bday = new Date('2026-09-25T00:00:00');
@@ -1098,21 +823,21 @@ function renderCountdown() {
 
   const URGENCIES = [
     {
-      by: new Date('2026-05-15'),
+      by: new Date('2026-05-20'),
+      task: 'Book Estancia Los Potreros — Córdoba Sierras',
+      sub: 'The birthday property. Very limited capacity, direct booking only. Contact immediately and mention September 25th.',
+      threshold: 10,
+    },
+    {
+      by: new Date('2026-05-25'),
       task: 'Book Algodon Mansion — Buenos Aires',
-      sub: 'Small boutique property. Call or email directly. Confirm room category and any special requests at the time of booking.',
+      sub: 'Boutique property in Recoleta. Small inventory, book before June to secure preferred room.',
       threshold: 14,
     },
     {
-      by: new Date('2026-05-20'),
+      by: new Date('2026-05-25'),
       task: 'Book Casa de Uco — Mendoza',
-      sub: 'Limited vineyard lodge in high demand for September. Book via Mr & Mrs Smith or contact the property directly.',
-      threshold: 14,
-    },
-    {
-      by: new Date('2026-05-20'),
-      task: 'Book Estancia Los Potreros',
-      sub: 'Very limited capacity — the most critical accommodation booking. Contact directly and mention the September 25th birthday.',
+      sub: 'Vineyard lodge, high demand in September. Book via Mr & Mrs Smith or direct.',
       threshold: 14,
     },
     {
@@ -1123,14 +848,14 @@ function renderCountdown() {
     },
     {
       by: new Date('2026-07-01'),
-      task: 'Book Domestic Flights — Aerolíneas Argentinas',
-      sub: 'Buenos Aires → Mendoza (Sep 23) and Mendoza → Córdoba (Sep 25, morning essential). Book together.',
+      task: 'Book All Domestic Flights — Aerolíneas Argentinas',
+      sub: 'Buenos Aires → Córdoba (Sep 23), Córdoba → Mendoza (Sep 27), Mendoza → Buenos Aires (Oct 1). Book as a set.',
       threshold: 30,
     },
     {
       by: new Date('2026-09-10'),
-      task: 'Birthday Dinner Arrangements — Estancia Los Potreros',
-      sub: 'Contact the estancia team: private candlelit dinner by fireplace, wine selection, any special setup. Confirm 2 weeks before arrival.',
+      task: 'Birthday Dinner — Confirm with Estancia Los Potreros',
+      sub: 'Private candlelit dinner, wine selection, special setup for Sep 25. Contact 2 weeks before arrival to confirm details.',
       threshold: 10,
     },
   ];
@@ -1140,12 +865,10 @@ function renderCountdown() {
     const dtl = Math.floor((u.by - now) / 864e5);
     const dateStr = u.by.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
     let pillCls, pillTxt;
-
-    if (dtl < 0)                    { pillCls = 'p-critical'; pillTxt = 'OVERDUE'; }
-    else if (dtl <= u.threshold)    { pillCls = 'p-critical'; pillTxt = `${dtl}d left`; }
-    else if (dtl <= u.threshold*2.5){ pillCls = 'p-soon';     pillTxt = `${dtl}d left`; }
-    else                            { pillCls = 'p-ok';       pillTxt = `${dtl}d left`; }
-
+    if      (dtl < 0)                   { pillCls = 'p-critical'; pillTxt = 'OVERDUE'; }
+    else if (dtl <= u.threshold)        { pillCls = 'p-critical'; pillTxt = `${dtl}d left`; }
+    else if (dtl <= u.threshold * 2.5)  { pillCls = 'p-soon';     pillTxt = `${dtl}d left`; }
+    else                                { pillCls = 'p-ok';       pillTxt = `${dtl}d left`; }
     ul += `
       <div class="urgency-item">
         <div class="urgency-by">By ${dateStr}</div>
@@ -1160,12 +883,11 @@ function renderCountdown() {
   document.getElementById('urgency-list').innerHTML = ul;
 }
 
-// ─── Init ─────────────────────────────────────────────────────────────────
+// ─── Init ─────────────────────────────────────────────────────────────────────
 renderBookings();
 renderTransport();
 renderCountdown();
 setInterval(renderCountdown, 60000);
 </script>
-
 </body>
 </html>
