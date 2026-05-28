@@ -216,6 +216,38 @@
       .day-time { width: 68px; padding-right: 1.25rem; }
       .urgency-by { min-width: 62px; }
     }
+
+    /* ═══════════ DAYS TAB ═══════════ */
+    .day-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 5px; margin-bottom: 6px; overflow: hidden; transition: border-color 0.18s; }
+    .day-card:hover { border-color: var(--border-gold); }
+    .day-card.birthday { border-color: rgba(201,168,76,0.3); }
+    .dc-header { display: flex; align-items: center; gap: 1rem; padding: 0.9rem 1.25rem; cursor: pointer; user-select: none; }
+    .dc-date-col { text-align: right; min-width: 48px; flex-shrink: 0; }
+    .dc-date { font-size: 0.78rem; color: var(--gold); letter-spacing: 0.05em; line-height: 1.3; }
+    .dc-weekday { font-size: 0.55rem; color: var(--gold-dim); letter-spacing: 0.12em; text-transform: uppercase; }
+    .dc-info { flex: 1; min-width: 0; }
+    .dc-title { font-size: 0.88rem; color: var(--cream); }
+    .day-card.birthday .dc-title { color: var(--gold-light); }
+    .dc-loc { font-size: 0.63rem; color: var(--cream-dim); margin-top: 0.12rem; letter-spacing: 0.05em; }
+    .dc-chevron { color: var(--cream-dim); font-size: 0.65rem; transition: transform 0.18s; flex-shrink: 0; }
+    .day-card.open .dc-chevron { transform: rotate(180deg); }
+    .dc-body { display: none; border-top: 1px solid var(--border); }
+    .day-card.open .dc-body { display: block; }
+    .dc-day-note { font-size: 0.72rem; color: var(--gold-dim); font-style: italic; padding: 0.65rem 1.25rem; border-bottom: 1px solid var(--border); }
+    .dc-block { display: grid; grid-template-columns: 100px 1fr; border-bottom: 1px solid var(--border); }
+    .dc-block:last-child { border-bottom: none; }
+    .dc-blabel { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-dim); padding: 0.9rem 0 0.9rem 1.25rem; padding-right: 0.5rem; line-height: 1.5; }
+    .dc-bcontent { padding: 0.85rem 1.25rem 0.85rem 0; }
+    .dc-bnote { font-size: 0.71rem; color: var(--gold-dim); font-style: italic; margin-bottom: 0.4rem; line-height: 1.5; }
+    .dc-venue { font-size: 0.86rem; color: var(--gold); margin-bottom: 0.2rem; }
+    .dc-vnote { font-size: 0.71rem; color: var(--cream-dim); font-style: italic; line-height: 1.55; margin-bottom: 0.45rem; }
+    .dc-list { list-style: none; }
+    .dc-list li { font-size: 0.78rem; color: var(--cream-dim); padding: 0.17rem 0 0.17rem 1rem; position: relative; line-height: 1.4; }
+    .dc-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold-dim); }
+    .dc-pick { list-style: none; margin-top: 0.1rem; }
+    .dc-pick li { font-size: 0.78rem; color: var(--cream-dim); padding: 0.17rem 0 0.17rem 1rem; position: relative; line-height: 1.4; }
+    .dc-pick li::before { content: '◦'; position: absolute; left: 0; color: var(--gold-dim); }
+    @media (max-width: 500px) { .dc-block { grid-template-columns: 80px 1fr; } }
   </style>
 </head>
 <body>
@@ -229,6 +261,7 @@
 
 <nav>
   <button class="active" onclick="show('itinerary',this)">Itinerary</button>
+  <button onclick="show('days',this)">Day by Day</button>
   <button onclick="show('bookings',this)">Bookings</button>
   <button onclick="show('transport',this)">Transport</button>
   <button onclick="show('countdown',this)">Countdown</button>
@@ -336,6 +369,16 @@
       </div>
 
     </div>
+  </section>
+
+  <!-- ══════════════ DAYS ══════════════ -->
+  <section id="days" class="section">
+    <div class="section-header">
+      <h2>Day by Day</h2>
+      <div class="divider"></div>
+      <p>September 20 – October 3 &nbsp;·&nbsp; every day, morning through evening</p>
+    </div>
+    <div id="days-list"></div>
   </section>
 
   <!-- ══════════════ BOOKINGS ══════════════ -->
@@ -472,6 +515,7 @@ function show(id, btn) {
   btn.classList.add('active');
   if (id === 'countdown') renderCountdown();
   if (id === 'transport') renderTransport();
+  if (id === 'days') renderDays();
 }
 
 // ─── Booking data ─────────────────────────────────────────────────────────────
@@ -883,7 +927,192 @@ function renderCountdown() {
   document.getElementById('urgency-list').innerHTML = ul;
 }
 
+// ─── Days data ────────────────────────────────────────────────────────────────
+const DAYS = [
+  {
+    id:'d0920', date:'Sep 20', weekday:'Sunday',
+    title:'Arrival in Buenos Aires', location:'Buenos Aires · Algodon Mansion',
+    blocks:[
+      { label:'Afternoon', items:['Settle in slowly — no agenda','Short orientation walk around Recoleta','Coffee at La Biela','Avenida Alvear and the belle époque buildings'] },
+      { label:'Dinner', venue:'Aramburu Relais & Châteaux', vnote:'The special-occasion dinner in Buenos Aires. Keep it for the first night while energy is still high.' },
+      { label:'After dinner', pick:['Digestif at Gran Bar Danzon','Return to hotel and sleep early'] }
+    ]
+  },
+  {
+    id:'d0921', date:'Sep 21', weekday:'Monday',
+    title:'Recoleta and Palermo', location:'Buenos Aires',
+    blocks:[
+      { label:'Morning', items:['Breakfast at hotel','Early walk through Recoleta Cemetery','Continue toward Plaza Francia'], venue:'El Ateneo Grand Splendid', vnote:'One of the world\'s great bookstores — very aligned with the tone of this trip.' },
+      { label:'Lunch', venue:'El Preferido de Palermo', vnote:'Stylish, relaxed, deeply Argentine, not overly formal.', items:['Order: tortilla, milanesa, tomato dishes, vermouth'] },
+      { label:'Afternoon', items:['Slow walk around Palermo Soho','Boutiques and cafés — no agenda'] },
+      { label:'Evening', pick:['Verdot Wine Bar','Winemakers Vinoteca Bar de Vinos'] },
+      { label:'Dinner', venue:'Don Julio Parrilla', vnote:'Internationally known but genuinely excellent — quality exceptional, atmosphere warm rather than stiff.' }
+    ]
+  },
+  {
+    id:'d0922', date:'Sep 22', weekday:'Tuesday',
+    title:'Slow Buenos Aires', location:'Buenos Aires',
+    daynote:'No pressure day.',
+    blocks:[
+      { label:'Morning', items:['Late breakfast','Architecture walk along Avenida Alvear','Palacio Duhau gardens'] },
+      { label:'Lunch', venue:'Elena', vnote:'Long lunch rather than formal dinner works better here.' },
+      { label:'Afternoon', pick:['Return to hotel for rest','Browse La Librería de Ávila','Coffee at Roster Cafe Recoleta','Explore San Telmo slowly'] },
+      { label:'Dinner', venue:'El Burladero', vnote:'Warm Spanish-Argentine atmosphere. Excellent for seafood, jamón, comfort dishes, good wine.' }
+    ]
+  },
+  {
+    id:'d0923', date:'Sep 23', weekday:'Wednesday',
+    title:'Buenos Aires to the Sierras', location:'Estancia Los Potreros · Córdoba Sierras',
+    blocks:[
+      { label:'Morning', items:['Domestic flight Buenos Aires → Córdoba','Private transfer into the Sierras Chicas'] },
+      { label:'Arrival', bnote:'This should feel like exhaling.', items:['Long countryside lunch at the estancia','Settle into the room','Walk the grounds with the estancia dogs','Veranda drinks at sunset'] },
+      { label:'Evening', items:['Communal estancia dinner','Malbec by the fireplace','Conversation rather than activity'] }
+    ]
+  },
+  {
+    id:'d0924', date:'Sep 24', weekday:'Thursday',
+    title:'Estancia Immersion', location:'Estancia Los Potreros · Córdoba Sierras',
+    blocks:[
+      { label:'Morning', items:['Relaxed breakfast','Guided walk through trails and wildflowers','Optional waterfall and swimming hole walk'] },
+      { label:'Lunch', items:['Traditional asado lunch'] },
+      { label:'Afternoon', pick:['Pool','Hammock','Birdwatching walk','Photography in the sierras','Reading by the fireplace or on the veranda'] },
+      { label:'Evening', items:['Informal wine tasting with the hosts','Relaxed countryside dinner'] }
+    ]
+  },
+  {
+    id:'d0925', date:'Sep 25', weekday:'Friday',
+    title:'The Birthday', location:'Estancia Los Potreros · Córdoba Sierras',
+    isBirthday:true,
+    blocks:[
+      { label:'Morning', items:['Breakfast in room or on veranda','Coffee overlooking the sierras','No alarms'] },
+      { label:'Late morning', pick:['Gentle horseback ride','Guided walk through the sierras','Waterfall excursion','Remain at the estancia — do nothing'] },
+      { label:'Lunch', items:['Long relaxed lunch outdoors if weather allows'] },
+      { label:'Afternoon', items:['Bath','Reading','Pool','Hammock','Complete downtime'] },
+      { label:'Sunset', items:['Champagne or gin & tonic overlooking the hills'] },
+      { label:'★ Dinner', bnote:'Intimate. Candlelit. Not performative.', items:['Private dinner by the fireplace','Estancia-style menu or elevated asado','Exceptional Malbec pairing','Warm personal atmosphere — no staging'] }
+    ]
+  },
+  {
+    id:'d0926', date:'Sep 26', weekday:'Saturday',
+    title:'Slow Countryside', location:'Estancia Los Potreros · Córdoba Sierras',
+    daynote:'No plans before noon.',
+    blocks:[
+      { label:'Morning', items:['Late breakfast'] },
+      { label:'Midday', pick:['Scenic countryside drive','Gaucho demonstrations','Empanada or bread-making with the kitchen'] },
+      { label:'Afternoon', pick:['Pool','Writing','Photography','Reading'] },
+      { label:'Evening', items:['Final relaxed estancia dinner','Slow conversation around the fire'] }
+    ]
+  },
+  {
+    id:'d0927', date:'Sep 27', weekday:'Sunday',
+    title:'Estancia to Mendoza', location:'Casa de Uco · Mendoza',
+    blocks:[
+      { label:'Morning', items:['Transfer toward Córdoba','Flight Córdoba → Mendoza'] },
+      { label:'Arrival', bnote:'Afternoon for decompression only.', items:['Spa sequence: dry sauna → rejuvenating shower → wet sauna → relaxing massage'] },
+      { label:'Dinner', venue:'Casa de Uco Restaurant', vnote:'Seasonal dishes, estate wine, slow dinner overlooking the vineyards — not necessarily a tasting menu.' }
+    ]
+  },
+  {
+    id:'d0928', date:'Sep 28', weekday:'Monday',
+    title:'Vineyard Living', location:'Casa de Uco · Mendoza',
+    blocks:[
+      { label:'Morning', items:['Slow breakfast facing the Andes','Casual cycle through the vineyards'] },
+      { label:'Lunch', venue:'Asado in the Vineyards — Casa de Uco', vnote:'More aligned with this trip\'s pace than formal dining.' },
+      { label:'Afternoon', items:['Pool','Spa','Wine on the terrace'] },
+      { label:'Dinner', bnote:'Simple only.', items:['Empanadas, pasta, local vegetables','Malbec'] }
+    ]
+  },
+  {
+    id:'d0929', date:'Sep 29', weekday:'Tuesday',
+    title:'Wine and Mountains', location:'Casa de Uco · Mendoza',
+    blocks:[
+      { label:'Morning', bnote:'One major experience only.', pick:['Blending session — you leave with your own wine, especially memorable','Tour and tasting'] },
+      { label:'Lunch', venue:'Casa Vigil', vnote:'Long vineyard lunch. One of the finest dining experiences in the Uco Valley.' },
+      { label:'Afternoon', items:['Hot stone massage','Rest','Reading overlooking vineyards'] },
+      { label:'Evening', items:['Sunset wine outside','Very light dinner afterward'] }
+    ]
+  },
+  {
+    id:'d0930', date:'Sep 30', weekday:'Wednesday',
+    title:'Andes Day', location:'Casa de Uco · Mendoza',
+    blocks:[
+      { label:'Morning', pick:['Andes horseback ride','Hiking','Sunrise in the mountains','Absolutely nothing — stay in bed'] },
+      { label:'Lunch', venue:'Gourmet Picnic Overlooking the Mountains', vnote:'Arranged by the property — one of the most distinctive Casa de Uco experiences.' },
+      { label:'Afternoon', items:['Spa','Bath','Terrace wine'] },
+      { label:'Dinner', items:['Private relaxed dinner at the hotel'] }
+    ]
+  },
+  {
+    id:'d1001', date:'Oct 1', weekday:'Thursday',
+    title:'Return to Buenos Aires', location:'Buenos Aires · Algodon Mansion',
+    blocks:[
+      { label:'Morning', items:['Slow departure from Mendoza','Flight Mendoza → Buenos Aires'] },
+      { label:'Afternoon', items:['Return to Algodon Mansion','Rest — the city looks different after two weeks away'] },
+      { label:'Dinner', venue:'Roux', vnote:'Elegant but warm. Excellent final-city dinner without feeling heavy.' }
+    ]
+  },
+  {
+    id:'d1002', date:'Oct 2', weekday:'Friday',
+    title:'Final Buenos Aires Day', location:'Buenos Aires',
+    daynote:'Reflective and easy.',
+    blocks:[
+      { label:'Morning', venue:'Breakfast at La Biela', items:['Late morning: bookstores, galleries, final shopping, café wandering'] },
+      { label:'Lunch', items:['Simple porteño lunch — no major reservation required'] },
+      { label:'Afternoon', items:['Pack slowly','Terrace drinks at hotel','Final walk through Recoleta'] },
+      { label:'Dinner', bnote:'Emotional rather than ambitious.', pick:['Gran Bar Danzon','Return to favourite wine bar'], items:['Relaxed pasta or seafood — no tasting menus'] },
+      { label:'After dinner', items:['Slow walk back through Recoleta streets'] }
+    ]
+  },
+  {
+    id:'d1003', date:'Oct 3', weekday:'Saturday',
+    title:'Departure', location:'Buenos Aires EZE → Home',
+    blocks:[
+      { label:'Morning', items:['Relaxed breakfast','Transfer to EZE airport','International departure'] }
+    ]
+  }
+];
+
+// ─── Render days ──────────────────────────────────────────────────────────────
+function renderDays() {
+  const container = document.getElementById('days-list');
+  if (!container) return;
+  const openItems = new Set([...document.querySelectorAll('.day-card.open')].map(el => el.dataset.id));
+
+  container.innerHTML = DAYS.map(d => {
+    const isOpen = openItems.has(d.id);
+
+    let bodyHtml = '';
+    if (d.daynote) bodyHtml += `<div class="dc-day-note">${d.daynote}</div>`;
+
+    d.blocks.forEach(b => {
+      let content = '';
+      if (b.bnote) content += `<div class="dc-bnote">${b.bnote}</div>`;
+      if (b.venue) content += `<div class="dc-venue">${b.venue}</div>`;
+      if (b.vnote) content += `<div class="dc-vnote">${b.vnote}</div>`;
+      if (b.items && b.items.length) content += `<ul class="dc-list">${b.items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+      if (b.pick && b.pick.length) content += `<ul class="dc-pick">${b.pick.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+      bodyHtml += `<div class="dc-block"><div class="dc-blabel">${b.label}</div><div class="dc-bcontent">${content}</div></div>`;
+    });
+
+    return `
+      <div class="day-card${isOpen?' open':''}${d.isBirthday?' birthday':''}" data-id="${d.id}">
+        <div class="dc-header" onclick="toggleDay('${d.id}')">
+          <div class="dc-date-col"><div class="dc-date">${d.date}</div><div class="dc-weekday">${d.weekday}</div></div>
+          <div class="dc-info"><div class="dc-title">${d.isBirthday?'★ ':''}${d.title}</div><div class="dc-loc">${d.location}</div></div>
+          <div class="dc-chevron">▾</div>
+        </div>
+        <div class="dc-body">${bodyHtml}</div>
+      </div>`;
+  }).join('');
+}
+
+function toggleDay(id) {
+  const el = document.querySelector(`.day-card[data-id="${id}"]`);
+  if (el) el.classList.toggle('open');
+}
+
 // ─── Init ─────────────────────────────────────────────────────────────────────
+renderDays();
 renderBookings();
 renderTransport();
 renderCountdown();
